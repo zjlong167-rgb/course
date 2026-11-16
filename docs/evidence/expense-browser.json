@@ -1,0 +1,69 @@
+{
+  "result": "passed",
+  "results": [
+    {
+      "scene": "正常报销 · 材料齐全",
+      "width": 1440,
+      "controls": true,
+      "reverseRebuild": true,
+      "edges": 8
+    },
+    {
+      "scene": "退回补正 · 缺少附件",
+      "width": 1440,
+      "controls": true,
+      "reverseRebuild": true,
+      "edges": 8
+    },
+    {
+      "scene": "超额加签 · 授权审批",
+      "width": 1440,
+      "controls": true,
+      "reverseRebuild": true,
+      "edges": 8
+    },
+    {
+      "scene": "正常报销 · 材料齐全",
+      "width": 390,
+      "controls": true,
+      "reverseRebuild": true,
+      "edges": 8
+    },
+    {
+      "scene": "退回补正 · 缺少附件",
+      "width": 390,
+      "controls": true,
+      "reverseRebuild": true,
+      "edges": 8
+    },
+    {
+      "scene": "超额加签 · 授权审批",
+      "width": 390,
+      "controls": true,
+      "reverseRebuild": true,
+      "edges": 8
+    },
+    {
+      "scene": "正常报销 · 材料齐全",
+      "width": 320,
+      "controls": true,
+      "reverseRebuild": true,
+      "edges": 8
+    },
+    {
+      "scene": "退回补正 · 缺少附件",
+      "width": 320,
+      "controls": true,
+      "reverseRebuild": true,
+      "edges": 8
+    },
+    {
+      "scene": "超额加签 · 授权审批",
+      "width": 320,
+      "controls": true,
+      "reverseRebuild": true,
+      "edges": 8
+    }
+  ],
+  "errors": []
+}

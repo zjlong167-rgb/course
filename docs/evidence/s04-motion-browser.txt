@@ -1,0 +1,5 @@
+
+> course-platform@0.1.0 test:motion-browser
+> node scripts/check-motion-browser.mjs
+
+PASS directed lanes and progressive sequence, real playback, 2 videos

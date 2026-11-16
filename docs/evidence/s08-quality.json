@@ -1,0 +1,69 @@
+{
+  "checks": [
+    {
+      "channel": "chrome",
+      "version": "157.0.8103.51",
+      "course": "tcp",
+      "seeks": 30,
+      "mobile": "simulated viewport only"
+    },
+    {
+      "channel": "chrome",
+      "version": "157.0.8103.51",
+      "course": "expense",
+      "seeks": 30,
+      "mobile": "simulated viewport only"
+    },
+    {
+      "channel": "chrome",
+      "version": "157.0.8103.51",
+      "course": "pythagoras",
+      "seeks": 30,
+      "mobile": "simulated viewport only"
+    },
+    {
+      "channel": "chrome",
+      "version": "157.0.8103.51",
+      "course": "production",
+      "seeks": 30,
+      "mobile": "simulated viewport only"
+    },
+    {
+      "channel": "msedge",
+      "version": "141.0.3537.57",
+      "course": "tcp",
+      "seeks": 30,
+      "mobile": "simulated viewport only"
+    },
+    {
+      "channel": "msedge",
+      "version": "141.0.3537.57",
+      "course": "expense",
+      "seeks": 30,
+      "mobile": "simulated viewport only"
+    },
+    {
+      "channel": "msedge",
+      "version": "141.0.3537.57",
+      "course": "pythagoras",
+      "seeks": 30,
+      "mobile": "simulated viewport only"
+    },
+    {
+      "channel": "msedge",
+      "version": "141.0.3537.57",
+      "course": "production",
+      "seeks": 30,
+      "mobile": "simulated viewport only"
+    }
+  ],
+  "stress": {
+    "objects": 200,
+    "actions": 1000,
+    "seeks": 300,
+    "p50Ms": 1.064600000000155,
+    "p95Ms": 2.0673000000001593,
+    "maxMs": 6.912600000000111,
+    "scope": "pure rebuild CPU; not device frame rate"
+  }
+}

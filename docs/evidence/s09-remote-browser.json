@@ -1,0 +1,36 @@
+{
+  "origin": "http://192.192.99.188",
+  "browser": "157.0.8103.51",
+  "results": [
+    {
+      "name": "tcp",
+      "id": "1",
+      "slug": "course-5a3b05e59eef82a02f7956227155c59b",
+      "title": "候选 · TCP 三次握手"
+    },
+    {
+      "name": "expense",
+      "id": "2",
+      "slug": "course-42b8b8298ffd94cc65834de31a371b08",
+      "title": "候选 · 报销审批流程"
+    },
+    {
+      "name": "pythagoras",
+      "id": "3",
+      "slug": "course-008e3df93688bcd32e522b4e28420a35",
+      "title": "候选 · 勾股定理"
+    },
+    {
+      "name": "production",
+      "id": "4",
+      "slug": "course-e88dad624592c5f591b28c727ee72ae6",
+      "title": "候选 · 生产加工流程"
+    }
+  ],
+  "checks": [
+    "UI templates/save/reopen/local+authorized preview/publish/republish/history/rollback",
+    "anonymous four players and 390px simulated layout",
+    "real HTTP concurrent save 200/409; publish same key one version"
+  ],
+  "errors": []
+}

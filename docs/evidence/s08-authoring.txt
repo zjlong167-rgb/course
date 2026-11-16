@@ -1,0 +1,25 @@
+
+> course-platform@0.1.0 test:s05
+> node scripts/check-s05-templates.mjs && node scripts/check-s05-browser.mjs
+
+PASS blank, four isolated templates, all entity IDs and exact endpoints/targets, production resource requirement, parameter and reference pointers
+verified -1 S05 · 未命名课程 · 1794539995543
+verified 0 S05 · TCP 三次握手 · 1794540006028
+timeline [] []
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 6000ms exceeded.
+Call log:
+  - waiting for getByRole('button', { name: '删除步骤', exact: true })
+
+    at click (D:\AIDiy\course\scripts\check-s05-browser.mjs:8:123)
+    at D:\AIDiy\course\scripts\check-s05-browser.mjs:38:63 {
+  log: [
+    "  - waiting for getByRole('button', { name: '删除步骤', exact: true })"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.13.0

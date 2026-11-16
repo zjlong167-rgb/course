@@ -1,0 +1,10 @@
+
+> course-platform@0.1.0 test:s05
+> node scripts/check-s05-templates.mjs && node scripts/check-s05-browser.mjs
+
+PASS blank, four isolated templates, all entity IDs and exact endpoints/targets, production resource requirement, parameter and reference pointers
+verified -1 S05 · 未命名课程 · 1794540205529
+verified 0 S05 · TCP 三次握手 · 1794540213013
+verified 1 S05 · 报销审批流程 · 1794540250210
+verified 2 S05 · 勾股定理 · 1794540259951
+verified 3 S05 · 生产加工流程 · 1794540272597

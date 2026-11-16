@@ -1,0 +1,5 @@
+alpine:3.23.3 saved 3999838
+nginx:1.28.2-alpine saved 27425125
+node:24.13.0-bookworm-slim saved 86614396
+mysql:8.4.9 saved 263296084
+golang:1.26.1-bookworm saved 324672315

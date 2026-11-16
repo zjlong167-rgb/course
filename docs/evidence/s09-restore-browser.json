@@ -1,0 +1,38 @@
+{
+  "source": "http://192.192.99.188",
+  "restore": "http://127.0.0.1:18083",
+  "records": [
+    {
+      "course": "tcp",
+      "versions": 6,
+      "current": "12",
+      "historyAndAssetHashes": true,
+      "anonymousPlayback": true
+    },
+    {
+      "course": "expense",
+      "versions": 2,
+      "current": "5",
+      "historyAndAssetHashes": true,
+      "anonymousPlayback": true
+    },
+    {
+      "course": "pythagoras",
+      "versions": 2,
+      "current": "7",
+      "historyAndAssetHashes": true,
+      "anonymousPlayback": true
+    },
+    {
+      "course": "production",
+      "versions": 2,
+      "current": "9",
+      "historyAndAssetHashes": true,
+      "anonymousPlayback": true
+    }
+  ],
+  "errors": [],
+  "login": true,
+  "catalogIdentical": true,
+  "independent": "course-restore / restore-data / localhost18082 via SSH tunnel18083"
+}

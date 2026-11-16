@@ -1,0 +1,87 @@
+{
+  "result": "passed",
+  "browser": "157.0.8103.51",
+  "errors": [],
+  "warnings": [],
+  "results": [
+    {
+      "width": 1440,
+      "networkAndSequence": "passed",
+      "reverseStateAndDetails": "passed",
+      "tableSelection": "passed",
+      "controlsAndSpeed": "passed",
+      "responsive": "passed"
+    },
+    {
+      "width": 900,
+      "networkAndSequence": "passed",
+      "reverseStateAndDetails": "passed",
+      "tableSelection": "passed",
+      "controlsAndSpeed": "passed",
+      "responsive": "passed"
+    },
+    {
+      "width": 390,
+      "networkAndSequence": "passed",
+      "reverseStateAndDetails": "passed",
+      "tableSelection": "passed",
+      "controlsAndSpeed": "passed",
+      "responsive": "passed"
+    },
+    {
+      "width": 320,
+      "networkAndSequence": "passed",
+      "reverseStateAndDetails": "passed",
+      "tableSelection": "passed",
+      "controlsAndSpeed": "passed",
+      "responsive": "passed"
+    },
+    {
+      "course": "expense",
+      "width": 1440,
+      "sharedPlayerRegression": "passed"
+    },
+    {
+      "course": "pythagoras",
+      "width": 1440,
+      "sharedPlayerRegression": "passed"
+    },
+    {
+      "course": "production",
+      "width": 1440,
+      "sharedPlayerRegression": "passed"
+    },
+    {
+      "course": "expense",
+      "width": 390,
+      "sharedPlayerRegression": "passed"
+    },
+    {
+      "course": "pythagoras",
+      "width": 390,
+      "sharedPlayerRegression": "passed"
+    },
+    {
+      "course": "production",
+      "width": 390,
+      "sharedPlayerRegression": "passed"
+    },
+    {
+      "course": "expense",
+      "width": 320,
+      "sharedPlayerRegression": "passed"
+    },
+    {
+      "course": "pythagoras",
+      "width": 320,
+      "sharedPlayerRegression": "passed"
+    },
+    {
+      "course": "production",
+      "width": 320,
+      "sharedPlayerRegression": "passed"
+    }
+  ],
+  "keyboard": "passed",
+  "screenshots": 8
+}

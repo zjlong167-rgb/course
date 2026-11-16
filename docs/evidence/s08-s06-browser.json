@@ -1,0 +1,14 @@
+{
+  "result": "passed",
+  "browser": "157.0.8103.51",
+  "id": "132",
+  "slug": "course-e22811f64a8eda87aa6afc5d9f62daac",
+  "first": "94",
+  "second": "95",
+  "finalPointer": "94",
+  "draftRevision": "2",
+  "auditEntries": 3,
+  "lostResponseRetried": true,
+  "crossCourseRollback": 404,
+  "errors": []
+}

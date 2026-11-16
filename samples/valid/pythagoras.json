@@ -1,0 +1,156 @@
+{
+  "formatVersion": "1.0.0",
+  "id": "pythagoras",
+  "title": "勾股定理",
+  "summary": "勾股定理的分步教学样例",
+  "category": "math",
+  "assets": [],
+  "components": [
+    {
+      "type": "geometry",
+      "version": "1.0.0"
+    },
+    {
+      "type": "formula",
+      "version": "1.0.0"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "chapter-1",
+      "title": "基础演示",
+      "scenes": [
+        {
+          "id": "scene-1",
+          "title": "勾股定理",
+          "canvas": {
+            "width": 960,
+            "height": 540
+          },
+          "objects": [
+            {
+              "id": "triangle",
+              "type": "geometry",
+              "component": "geometry",
+              "position": {
+                "x": 80,
+                "y": 100
+              },
+              "size": {
+                "width": 240,
+                "height": 180
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "idle"
+              },
+              "content": {
+                "label": "直角三角形 a=3 b=4 c=5",
+                "points": [
+                  {
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "x": 0,
+                    "y": 180
+                  },
+                  {
+                    "x": 240,
+                    "y": 180
+                  }
+                ]
+              },
+              "details": {
+                "说明": "直角三角形 a=3 b=4 c=5"
+              }
+            },
+            {
+              "id": "formula",
+              "type": "formula",
+              "component": "formula",
+              "position": {
+                "x": 360,
+                "y": 180
+              },
+              "size": {
+                "width": 530,
+                "height": 110
+              },
+              "initial": {
+                "visible": false,
+                "highlight": false,
+                "status": "idle"
+              },
+              "content": {
+                "label": "面积分解",
+                "tex": "(a+b)^2=4\\cdot\\frac{ab}{2}+c^2",
+                "states": {
+                  "simplified": "a^2+b^2=c^2"
+                }
+              },
+              "details": {
+                "说明": "面积分解"
+              }
+            }
+          ],
+          "steps": [
+            {
+              "id": "s1",
+              "title": "观察直角边",
+              "narration": "a、b 是直角边，c 是斜边。",
+              "durationMs": 2000,
+              "actions": [
+                {
+                  "id": "a1",
+                  "type": "highlight",
+                  "target": "triangle",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                }
+              ]
+            },
+            {
+              "id": "s2",
+              "title": "面积等式",
+              "narration": "取四个全等直角三角形，直角边 a、b，斜边 c。在边长 a+b 的正方形四角各放一个，斜边围成中央四边形；相邻锐角之和为 90°，所以中央是边长 c 的正方形。比较总面积：(a+b)² = 4×ab/2 + c²。当前图展示一个三角形，拼图构造由此段文字说明。",
+              "durationMs": 2000,
+              "actions": [
+                {
+                  "id": "a2",
+                  "type": "show",
+                  "target": "formula",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {}
+                }
+              ]
+            },
+            {
+              "id": "s3",
+              "title": "整理结果",
+              "narration": "展开左式 a²+2ab+b²，右式为 2ab+c²，两侧消去 2ab 得 a²+b²=c²。例：a=3、b=4，则 c²=25；边长 c>0，所以 c=5。一般结论适用于任意直角三角形。",
+              "durationMs": 2000,
+              "actions": [
+                {
+                  "id": "a3",
+                  "type": "setState",
+                  "target": "formula",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "simplified"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

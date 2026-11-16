@@ -1,0 +1,13 @@
+
+> course-platform@0.1.0 test:s04
+> node scripts/check-s04-browser.mjs
+
+created 0
+drag 0 1.48056 { x: 256.9, y: 194.02 }
+created 1
+drag 1 1.81543 { x: 248.8, y: 189.03 }
+created 2
+drag 2 1.56889 { x: 254.43, y: 192.5 }
+created 3
+drag 3 1.28195 { x: 263.7, y: 198.2 }
+PASS S04 authoring, pointer canvas, four types, persistence, references, conflict and failures

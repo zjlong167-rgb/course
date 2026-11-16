@@ -1,0 +1,12 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.waitForFunction: Timeout 15000ms exceeded.
+    at msg (D:\AIDiy\course\scripts\check-s09-remote.mjs:3:203)
+    at D:\AIDiy\course\scripts\check-s09-remote.mjs:8:78 {
+  log: [],
+  name: 'TimeoutError'
+}
+
+Node.js v24.13.0

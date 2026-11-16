@@ -1,0 +1,23 @@
+{
+  "purpose": "S01 specification fixtures; runtime evaluator tests required in S02/S03",
+  "initial": {"x":0,"y":0,"visible":true,"highlight":false,"status":"idle"},
+  "steps": [
+    {"durationMs":1000,"actions":[
+      {"type":"move","atMs":0,"durationMs":1000,"params":{"x":100,"y":0}},
+      {"type":"move","atMs":500,"durationMs":500,"params":{"x":200,"y":0}},
+      {"type":"hide","atMs":750,"durationMs":0,"params":{}}
+    ]},
+    {"durationMs":1000,"actions":[
+      {"type":"show","atMs":0,"durationMs":0,"params":{}},
+      {"type":"setState","atMs":0,"durationMs":0,"params":{"value":"done"}}
+    ]}
+  ],
+  "expected": [
+    {"timeMs":0,"x":0,"visible":true,"status":"idle","stepIndex":0},
+    {"timeMs":500,"x":50,"visible":true,"status":"idle","stepIndex":0},
+    {"timeMs":750,"x":125,"visible":false,"status":"idle","stepIndex":0},
+    {"timeMs":1000,"x":200,"visible":true,"status":"done","stepIndex":1},
+    {"timeMs":2000,"x":200,"visible":true,"status":"done","stepIndex":1}
+  ],
+  "seekOrders": [[0,750,1000],[1000,0,750]]
+}

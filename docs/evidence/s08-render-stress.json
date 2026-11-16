@@ -1,0 +1,12 @@
+{
+  "browser": "157.0.8103.51",
+  "objects": 200,
+  "actions": 1000,
+  "loadMs": 2633.5592000000006,
+  "frameCount": 8,
+  "frameGapP95Ms": 350.4000000000001,
+  "seekP95Ms": 285.78720000000067,
+  "seeks": 30,
+  "errors": [],
+  "scope": "desktop rendered fixture only; API response intercepted in this browser; no server data writes"
+}

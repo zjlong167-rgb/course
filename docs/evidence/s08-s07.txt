@@ -1,0 +1,20 @@
+
+> course-platform@0.1.0 test:s07
+> node scripts/check-s07-progress.mjs && node scripts/check-s07-browser.mjs && node scripts/check-s07-extra-browser.mjs
+
+PASS progress migration and malformed storage
+PASS [
+  'tcp: catalog/category/detail/controls/details/restore/4 viewports',
+  'expense: catalog/category/detail/controls/details/restore/4 viewports',
+  'pythagoras: catalog/category/detail/controls/details/restore/4 viewports',
+  'production: catalog/category/detail/controls/details/restore/4 viewports',
+  'scene navigation; real republish metadata migration, draft isolation, rollback, object ID invalidation, changed-content rollback invalidation',
+  'clear; damaged and denied storage; cross-course isolation; catalog empty/failure/no-match; 404 and course failure/retry; resource failure'
+]
+PASS [
+  'loading; playing course switch and scene link clears details, pauses at zero',
+  'network/sequence canvas and packet table horizontal scroll',
+  'math formula at derived step visible after canvas pan',
+  'production asset visible after canvas pan',
+  'empty scene body fails gracefully'
+]

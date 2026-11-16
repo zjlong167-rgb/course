@@ -1,0 +1,73 @@
+{
+  "browser": "157.0.8103.51",
+  "viewports": [
+    1440,
+    390,
+    320
+  ],
+  "pages": 7,
+  "formulaChecks": [
+    {
+      "width": 1440,
+      "step": 1,
+      "tex": "(a+b)^2=4\\cdot\\frac{ab}{2}+c^2"
+    },
+    {
+      "width": 1440,
+      "step": 2,
+      "tex": "a^2+2ab+b^2=2ab+c^2"
+    },
+    {
+      "width": 1440,
+      "step": 3,
+      "tex": "a^2+b^2=c^2"
+    },
+    {
+      "width": 1440,
+      "step": 4,
+      "tex": "3^2+4^2=25=5^2"
+    },
+    {
+      "width": 390,
+      "step": 1,
+      "tex": "(a+b)^2=4\\cdot\\frac{ab}{2}+c^2"
+    },
+    {
+      "width": 390,
+      "step": 2,
+      "tex": "a^2+2ab+b^2=2ab+c^2"
+    },
+    {
+      "width": 390,
+      "step": 3,
+      "tex": "a^2+b^2=c^2"
+    },
+    {
+      "width": 390,
+      "step": 4,
+      "tex": "3^2+4^2=25=5^2"
+    },
+    {
+      "width": 320,
+      "step": 1,
+      "tex": "(a+b)^2=4\\cdot\\frac{ab}{2}+c^2"
+    },
+    {
+      "width": 320,
+      "step": 2,
+      "tex": "a^2+2ab+b^2=2ab+c^2"
+    },
+    {
+      "width": 320,
+      "step": 3,
+      "tex": "a^2+b^2=c^2"
+    },
+    {
+      "width": 320,
+      "step": 4,
+      "tex": "3^2+4^2=25=5^2"
+    }
+  ],
+  "pageErrors": [],
+  "result": "passed"
+}

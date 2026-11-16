@@ -1,0 +1,10 @@
+{
+  "result": "passed",
+  "checks": [
+    "distinct parallel opposite lanes",
+    "six directed hop identities",
+    "0/25/50/75/100 percent diagonal trace",
+    "reverse-direction descending trace",
+    "pending/started boundary"
+  ]
+}

@@ -1,0 +1,1 @@
+PASS independent restore: login/catalog/all historical versions/asset bytes/four anonymous players

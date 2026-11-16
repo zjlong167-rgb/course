@@ -1,0 +1,11 @@
+FROM alpine:3.23.3
+RUN adduser -D -u 10001 course
+WORKDIR /app/backend
+COPY --chmod=755 course-api-linux /app/bin/course-api
+COPY --chmod=755 course-migrate-linux /app/bin/migrate
+COPY backend/migrations/ ./migrations/
+COPY contracts/ /app/contracts/
+USER course
+ENV LISTEN_ADDR=0.0.0.0:8080 ASSET_DIR=/data/assets GIN_MODE=release
+CMD ["/app/bin/course-api"]
+

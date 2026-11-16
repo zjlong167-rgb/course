@@ -1,0 +1,86 @@
+Complete: /opt/course-platform/backups/20261113-final
+database.sql: OK
+assets.tar.gz: OK
+compose.yaml: OK
+manifest.txt: OK
+Restored; verify login, public versions, historical assets and playback before acceptance.
+NAME                     IMAGE                 COMMAND                  SERVICE   CREATED          STATUS                    PORTS
+course-restore-api-1     course-api:20261113   "/app/bin/course-api"    api       23 seconds ago   Up 21 seconds (healthy)   
+course-restore-mysql-1   mysql:8.4.9           "docker-entrypoint.s��"   mysql     45 seconds ago   Up 45 seconds (healthy)   3306/tcp, 33060/tcp
+course-restore-web-1     course-web:20261113   "/docker-entrypoint.��"   web       23 seconds ago   Up 11 seconds (healthy)   127.0.0.1:18082->80/tcp
+a19dab597e7ae9b0c27c594d2c162dec314c5a708fa287bef2c41ba472d1c90f  /opt/course-platform/data/assets/a3b209ae4ba014c9c139e26daf2125fc8ef61f613c2151b1df69ddff3b245cbc
+a19dab597e7ae9b0c27c594d2c162dec314c5a708fa287bef2c41ba472d1c90f  /opt/course-platform/data/assets/cc42c439bd4ee7e55f5d23f543c460241a8fabe076dfcb1aa2f22b97ad4518a6
+a19dab597e7ae9b0c27c594d2c162dec314c5a708fa287bef2c41ba472d1c90f  /opt/course-platform/data/assets/d8fcf4d357f1a80777747064fe0c8a4c73c15616a2b66d776a94f2eae7fb2ca9
+a19dab597e7ae9b0c27c594d2c162dec314c5a708fa287bef2c41ba472d1c90f  /opt/course-platform/data/assets/cf69417995a34043fea38047fa84e535fbf571032784798955d6bd308fd19c7d
+a19dab597e7ae9b0c27c594d2c162dec314c5a708fa287bef2c41ba472d1c90f  /opt/course-platform/restore-data-20261113/assets/a3b209ae4ba014c9c139e26daf2125fc8ef61f613c2151b1df69ddff3b245cbc
+a19dab597e7ae9b0c27c594d2c162dec314c5a708fa287bef2c41ba472d1c90f  /opt/course-platform/restore-data-20261113/assets/cc42c439bd4ee7e55f5d23f543c460241a8fabe076dfcb1aa2f22b97ad4518a6
+a19dab597e7ae9b0c27c594d2c162dec314c5a708fa287bef2c41ba472d1c90f  /opt/course-platform/restore-data-20261113/assets/d8fcf4d357f1a80777747064fe0c8a4c73c15616a2b66d776a94f2eae7fb2ca9
+a19dab597e7ae9b0c27c594d2c162dec314c5a708fa287bef2c41ba472d1c90f  /opt/course-platform/restore-data-20261113/assets/cf69417995a34043fea38047fa84e535fbf571032784798955d6bd308fd19c7d
+[course-api:20261113] sha256:6a5dfa7783c6499a94d3b41d47d24b0e4cb21a44f047723a1fbf044637032170
+[course-web:20261113] sha256:56d0b36f727803e6ec6f716ae15e49349f58cc9d1640703a45ab93773b60bf3e
+[mysql:8.4.9] sha256:c6967b1a5cd460a674aa3e5020e30942adc2cbc4dcb89bcf605a6b9e7db0a981
+ Container course-prod-api-1  Stopping
+ Container course-prod-api-1  Stopped
+ Container course-prod-mysql-1  Waiting
+ Container course-prod-mysql-1  Healthy
+ Container course-prod-migrate-1  Starting
+ Container course-prod-migrate-1  Started
+ Container course-prod-migrate-1  Waiting
+ Container course-prod-migrate-1  Exited
+ Container course-prod-api-1  Starting
+ Container course-prod-api-1  Started
+ Network course-restore_default  Creating
+ Network course-restore_default  Created
+ Container course-restore-mysql-1  Creating
+ Container course-restore-mysql-1  Created
+ Container course-restore-mysql-1  Starting
+ Container course-restore-mysql-1  Started
+ Container course-restore-mysql-1  Waiting
+ Container course-restore-mysql-1  Healthy
+ Container course-restore-mysql-1  Running
+ Container course-restore-migrate-1  Creating
+ Container course-restore-migrate-1  Created
+ Container course-restore-api-1  Creating
+ Container course-restore-api-1  Created
+ Container course-restore-web-1  Creating
+ Container course-restore-web-1  Created
+ Container course-restore-mysql-1  Waiting
+ Container course-restore-mysql-1  Healthy
+ Container course-restore-migrate-1  Starting
+ Container course-restore-migrate-1  Started
+ Container course-restore-migrate-1  Waiting
+ Container course-restore-migrate-1  Exited
+ Container course-restore-api-1  Starting
+ Container course-restore-api-1  Started
+ Container course-restore-api-1  Waiting
+ Container course-restore-api-1  Healthy
+ Container course-restore-web-1  Starting
+ Container course-restore-web-1  Started
+ Container course-restore-api-1  Waiting
+ Container course-restore-web-1  Waiting
+ Container course-restore-mysql-1  Waiting
+ Container course-restore-migrate-1  Waiting
+ Container course-restore-api-1  Healthy
+ Container course-restore-migrate-1  Exited
+ Container course-restore-mysql-1  Healthy
+ Container course-restore-web-1  Healthy
+ Container course-prod-mysql-1  Running
+ Container course-prod-api-1  Running
+ Container course-prod-web-1  Running
+ Container course-prod-mysql-1  Waiting
+ Container course-prod-mysql-1  Healthy
+ Container course-prod-migrate-1  Starting
+ Container course-prod-migrate-1  Started
+ Container course-prod-migrate-1  Waiting
+ Container course-prod-migrate-1  Exited
+ Container course-prod-api-1  Waiting
+ Container course-prod-api-1  Healthy
+ Container course-prod-web-1  Waiting
+ Container course-prod-mysql-1  Waiting
+ Container course-prod-migrate-1  Waiting
+ Container course-prod-api-1  Waiting
+ Container course-prod-mysql-1  Healthy
+ Container course-prod-web-1  Healthy
+ Container course-prod-migrate-1  Exited
+ Container course-prod-api-1  Healthy
+

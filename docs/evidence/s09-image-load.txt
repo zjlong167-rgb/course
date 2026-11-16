@@ -1,0 +1,10 @@
+Loaded image: alpine:3.23.3
+
+Loaded image: nginx:1.28.2-alpine
+
+Loaded image: mysql:8.4.9
+
+Loaded image: golang:1.26.1-bookworm
+
+Loaded image: node:24.13.0-bookworm-slim
+

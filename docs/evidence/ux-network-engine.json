@@ -1,0 +1,28 @@
+{
+  "result": "passed",
+  "packetTimeline": [
+    {
+      "id": "syn",
+      "sentAt": 0,
+      "arrivedAt": 4100
+    },
+    {
+      "id": "synack",
+      "sentAt": 6000,
+      "arrivedAt": 10100
+    },
+    {
+      "id": "ack",
+      "sentAt": 12000,
+      "arrivedAt": 16100
+    }
+  ],
+  "checks": [
+    "schema and 7 illegal network mutations",
+    "3 route waypoints and source at exact times",
+    "two-end handshake state at 6 boundaries",
+    "packet table phase survives hide and reverse seek",
+    "0.5/1/1.5/2 speed validation and clock baseline",
+    "component flow@1.1.0 required for network metadata"
+  ]
+}

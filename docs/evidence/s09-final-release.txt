@@ -1,0 +1,5 @@
+bc803f3110c8f63903b07c2d48f21b9fdc42129a1e83765def133f4590276e0e  package-final.tar.gz
+bec222407fb2a01c68d7571bd2fac474f3b71927a2364c4f9f59d4a766dbeb25  source-final.tar.gz
+fca71d00e6cc516eab763c076388e9ca73b30d32a79175af8918270e8c16bd6d  application-images.tar.gz
+Filesystem                         Size  Used Avail Use% Mounted on
+/dev/mapper/ubuntu--vg-ubuntu--lv   46G   35G  9.1G  80% /

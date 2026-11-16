@@ -1,0 +1,25 @@
+{
+  "result": "passed",
+  "browser": "157.0.8103.51",
+  "errors": [],
+  "checks": [
+    {
+      "view": "network",
+      "directedAnimation": "passed",
+      "pauseFreeze": "passed",
+      "reverseSeek": "passed",
+      "viewSwitchTime": "passed",
+      "playEndReplay": "passed",
+      "video": "motion-network.webm"
+    },
+    {
+      "view": "sequence",
+      "directedAnimation": "passed",
+      "pauseFreeze": "passed",
+      "reverseSeek": "passed",
+      "viewSwitchTime": "passed",
+      "playEndReplay": "passed",
+      "video": "motion-sequence.webm"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+services:
+  migrate:
+    build: {context: .., dockerfile: deploy/Dockerfile.api-offline}
+  api:
+    build: {context: .., dockerfile: deploy/Dockerfile.api-offline}
+  web:
+    build: {context: .., dockerfile: deploy/Dockerfile.web-offline}

@@ -1,0 +1,37 @@
+NAME                  IMAGE                 COMMAND                  SERVICE   CREATED              STATUS                    PORTS
+course-prod-api-1     course-api:20261113   "/app/bin/course-api"    api       47 seconds ago       Up 23 seconds (healthy)   
+course-prod-mysql-1   mysql:8.4.9           "docker-entrypoint.s��"   mysql     About a minute ago   Up 46 seconds (healthy)   3306/tcp, 33060/tcp
+course-prod-web-1     course-web:20261113   "/docker-entrypoint.��"   web       47 seconds ago       Up 11 seconds (healthy)   0.0.0.0:80->80/tcp
+{"database":"mysql","status":"ok"} Network course-prod_default  Creating
+ Network course-prod_default  Created
+ Container course-prod-mysql-1  Creating
+ Container course-prod-mysql-1  Created
+ Container course-prod-migrate-1  Creating
+ Container course-prod-migrate-1  Created
+ Container course-prod-api-1  Creating
+ Container course-prod-api-1  Created
+ Container course-prod-web-1  Creating
+ Container course-prod-web-1  Created
+ Container course-prod-mysql-1  Starting
+ Container course-prod-mysql-1  Started
+ Container course-prod-mysql-1  Waiting
+ Container course-prod-mysql-1  Healthy
+ Container course-prod-migrate-1  Starting
+ Container course-prod-migrate-1  Started
+ Container course-prod-migrate-1  Waiting
+ Container course-prod-migrate-1  Exited
+ Container course-prod-api-1  Starting
+ Container course-prod-api-1  Started
+ Container course-prod-api-1  Waiting
+ Container course-prod-api-1  Healthy
+ Container course-prod-web-1  Starting
+ Container course-prod-web-1  Started
+ Container course-prod-api-1  Waiting
+ Container course-prod-web-1  Waiting
+ Container course-prod-mysql-1  Waiting
+ Container course-prod-migrate-1  Waiting
+ Container course-prod-migrate-1  Exited
+ Container course-prod-api-1  Healthy
+ Container course-prod-mysql-1  Healthy
+ Container course-prod-web-1  Healthy
+

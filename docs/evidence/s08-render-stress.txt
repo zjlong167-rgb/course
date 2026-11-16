@@ -1,0 +1,1 @@
+PASS actual rendered 200 objects/1000 actions, playback and 30 seeks

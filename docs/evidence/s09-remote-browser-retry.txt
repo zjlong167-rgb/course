@@ -1,0 +1,15 @@
+studio status [ '' ] []
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.selectOption: Timeout 15000ms exceeded.
+Call log:
+  - waiting for getByLabel('回滚目标', { exact: true })
+
+    at D:\AIDiy\course\scripts\check-s09-remote.mjs:14:22 {
+  log: [ "  - waiting for getByLabel('回滚目标', { exact: true })" ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.13.0

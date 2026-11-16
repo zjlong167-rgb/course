@@ -1,0 +1,11 @@
+{
+  "result": "passed",
+  "anonymousReadsAndWrites": "401",
+  "csrf": "403",
+  "invalidResource": "422 and draft unchanged",
+  "spoofedType": "422",
+  "oversize": "413",
+  "assetHeaders": "nosniff + private no-store",
+  "preview": "private no-store",
+  "courseId": "54"
+}

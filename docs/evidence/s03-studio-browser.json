@@ -1,0 +1,38 @@
+{
+  "result": "passed",
+  "browser": "157.0.8103.51",
+  "errors": [],
+  "results": [
+    {
+      "course": 0,
+      "createSaveReopenPreviewSpeed": "passed"
+    },
+    {
+      "course": 1,
+      "createSaveReopenPreviewSpeed": "passed"
+    },
+    {
+      "course": 2,
+      "createSaveReopenPreviewSpeed": "passed"
+    },
+    {
+      "course": 3,
+      "createSaveReopenPreviewSpeed": "passed"
+    },
+    {
+      "inFlightEdit": "later edits remain dirty and can be saved"
+    },
+    {
+      "twoTabs": "409 retained local, compared latest, explicit merged save, reopen passed"
+    },
+    {
+      "navigation": "3 scenes / 2 chapters clear time, playing, selection"
+    },
+    {
+      "refreshLogout": "DB restored chapters; logout revokes preview"
+    },
+    {
+      "courseSwitch": "playing course changed; clock and selection cleared"
+    }
+  ]
+}

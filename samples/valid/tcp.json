@@ -1,0 +1,721 @@
+{
+  "formatVersion": "1.0.0",
+  "id": "tcp",
+  "title": "TCP 三次握手",
+  "summary": "建立可靠连接的第一步：跟随三个报文，理解序列号、确认号与两端状态。",
+  "category": "network",
+  "assets": [],
+  "components": [
+    {
+      "type": "flow",
+      "version": "1.1.0"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "chapter-1",
+      "title": "基础演示",
+      "scenes": [
+        {
+          "id": "scene-1",
+          "title": "TCP 三次握手",
+          "canvas": {
+            "width": 960,
+            "height": 560
+          },
+          "objects": [
+            {
+              "id": "client",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 70,
+                "y": 300
+              },
+              "size": {
+                "width": 150,
+                "height": 120
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "CLOSED"
+              },
+              "content": {
+                "label": "客户端",
+                "visual": "laptop",
+                "address": "192.168.1.10"
+              },
+              "details": {
+                "角色": "主动打开连接，使用临时端口 49152。",
+                "初始序列号": "100",
+                "学习提示": "收到 SYN+ACK 后即可确认服务端的序列号。"
+              }
+            },
+            {
+              "id": "router",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 350,
+                "y": 210
+              },
+              "size": {
+                "width": 140,
+                "height": 120
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "转发就绪"
+              },
+              "content": {
+                "label": "路由器",
+                "visual": "router",
+                "address": "192.168.1.1"
+              },
+              "details": {
+                "作用": "转发 IP 数据包；不参与两端的 TCP 握手。"
+              }
+            },
+            {
+              "id": "internet",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 560,
+                "y": 320
+              },
+              "size": {
+                "width": 140,
+                "height": 110
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "网络就绪"
+              },
+              "content": {
+                "label": "互联网",
+                "visual": "cloud",
+                "address": "IP 网络"
+              },
+              "details": {
+                "说明": "中间网络被简化为一条演示路径，不模拟真实链路时延。"
+              }
+            },
+            {
+              "id": "server",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 760,
+                "y": 75
+              },
+              "size": {
+                "width": 130,
+                "height": 170
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "LISTEN"
+              },
+              "content": {
+                "label": "Web 服务器",
+                "visual": "server",
+                "address": "203.0.113.10"
+              },
+              "details": {
+                "角色": "监听 TCP 80 端口，等待客户端连接。",
+                "初始序列号": "300",
+                "学习提示": "收到最后一个 ACK 后，连接进入 ESTABLISHED。"
+              }
+            },
+            {
+              "id": "lan",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "idle"
+              },
+              "content": {
+                "label": "网络路径",
+                "source": "client",
+                "target": "router"
+              },
+              "details": {
+                "说明": "报文沿这条路径逐跳传递。"
+              }
+            },
+            {
+              "id": "wan",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "idle"
+              },
+              "content": {
+                "label": "网络路径",
+                "source": "router",
+                "target": "internet"
+              },
+              "details": {
+                "说明": "报文沿这条路径逐跳传递。"
+              }
+            },
+            {
+              "id": "remote",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "idle"
+              },
+              "content": {
+                "label": "网络路径",
+                "source": "internet",
+                "target": "server"
+              },
+              "details": {
+                "说明": "报文沿这条路径逐跳传递。"
+              }
+            },
+            {
+              "id": "syn",
+              "type": "packet",
+              "component": "flow",
+              "position": {
+                "x": 129,
+                "y": 344
+              },
+              "size": {
+                "width": 32,
+                "height": 32
+              },
+              "initial": {
+                "visible": false,
+                "highlight": false,
+                "status": "pending"
+              },
+              "content": {
+                "label": "SYN",
+                "packet": {
+                  "source": "client",
+                  "target": "server",
+                  "protocol": "TCP",
+                  "sourcePort": 49152,
+                  "targetPort": 80,
+                  "flags": "SYN",
+                  "seq": 100,
+                  "bytes": 60
+                }
+              },
+              "details": {
+                "报文含义": "客户端告诉服务端：我的初始序列号是 100，请从 101 开始确认。",
+                "序列号规则": "SYN 消耗一个序列号；不携带数据的 ACK 不消耗序列号。",
+                "大小说明": "60 B 为本演示的简化链路帧大小，不表示固定的 TCP 首部长度。"
+              }
+            },
+            {
+              "id": "synack",
+              "type": "packet",
+              "component": "flow",
+              "position": {
+                "x": 809,
+                "y": 144
+              },
+              "size": {
+                "width": 32,
+                "height": 32
+              },
+              "initial": {
+                "visible": false,
+                "highlight": false,
+                "status": "pending"
+              },
+              "content": {
+                "label": "SYN, ACK",
+                "packet": {
+                  "source": "server",
+                  "target": "client",
+                  "protocol": "TCP",
+                  "sourcePort": 80,
+                  "targetPort": 49152,
+                  "flags": "SYN, ACK",
+                  "seq": 300,
+                  "bytes": 60,
+                  "ack": 101
+                }
+              },
+              "details": {
+                "报文含义": "服务端用 ACK=101 确认客户端的 SYN，同时发送自己的初始序列号 300。",
+                "序列号规则": "SYN 消耗一个序列号；不携带数据的 ACK 不消耗序列号。",
+                "大小说明": "60 B 为本演示的简化链路帧大小，不表示固定的 TCP 首部长度。"
+              }
+            },
+            {
+              "id": "ack",
+              "type": "packet",
+              "component": "flow",
+              "position": {
+                "x": 129,
+                "y": 344
+              },
+              "size": {
+                "width": 32,
+                "height": 32
+              },
+              "initial": {
+                "visible": false,
+                "highlight": false,
+                "status": "pending"
+              },
+              "content": {
+                "label": "ACK",
+                "packet": {
+                  "source": "client",
+                  "target": "server",
+                  "protocol": "TCP",
+                  "sourcePort": 49152,
+                  "targetPort": 80,
+                  "flags": "ACK",
+                  "seq": 101,
+                  "bytes": 60,
+                  "ack": 301
+                }
+              },
+              "details": {
+                "报文含义": "客户端用 ACK=301 确认服务端的 SYN。纯 ACK 不消耗序列号。",
+                "序列号规则": "SYN 消耗一个序列号；不携带数据的 ACK 不消耗序列号。",
+                "大小说明": "60 B 为本演示的简化链路帧大小，不表示固定的 TCP 首部长度。"
+              }
+            }
+          ],
+          "steps": [
+            {
+              "id": "s1",
+              "title": "请求同步序列号",
+              "narration": "客户端告诉服务端：我的初始序列号是 100，请从 101 开始确认。",
+              "durationMs": 6000,
+              "actions": [
+                {
+                  "id": "syn-show",
+                  "type": "show",
+                  "target": "syn",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {}
+                },
+                {
+                  "id": "syn-sent",
+                  "type": "setState",
+                  "target": "syn",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "sending"
+                  }
+                },
+                {
+                  "id": "syn-focus",
+                  "type": "highlight",
+                  "target": "client",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "syn-hop-0",
+                  "type": "move",
+                  "target": "syn",
+                  "atMs": 800,
+                  "durationMs": 1100,
+                  "params": {
+                    "x": 404,
+                    "y": 254
+                  }
+                },
+                {
+                  "id": "syn-hop-1",
+                  "type": "move",
+                  "target": "syn",
+                  "atMs": 1900,
+                  "durationMs": 1100,
+                  "params": {
+                    "x": 614,
+                    "y": 359
+                  }
+                },
+                {
+                  "id": "syn-hop-2",
+                  "type": "move",
+                  "target": "syn",
+                  "atMs": 3000,
+                  "durationMs": 1100,
+                  "params": {
+                    "x": 809,
+                    "y": 144
+                  }
+                },
+                {
+                  "id": "syn-received",
+                  "type": "setState",
+                  "target": "syn",
+                  "atMs": 4100,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "received"
+                  }
+                },
+                {
+                  "id": "syn-arrive",
+                  "type": "highlight",
+                  "target": "server",
+                  "atMs": 4100,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "syn-hide",
+                  "type": "hide",
+                  "target": "syn",
+                  "atMs": 4800,
+                  "durationMs": 0,
+                  "params": {}
+                },
+                {
+                  "id": "syn-unfocus",
+                  "type": "highlight",
+                  "target": "client",
+                  "atMs": 5500,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "syn-unfocus-target",
+                  "type": "highlight",
+                  "target": "server",
+                  "atMs": 5500,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "syn-client-state",
+                  "type": "setState",
+                  "target": "client",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "SYN-SENT"
+                  }
+                },
+                {
+                  "id": "syn-server-state",
+                  "type": "setState",
+                  "target": "server",
+                  "atMs": 4100,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "SYN-RECEIVED"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "s2",
+              "title": "确认请求，发出回应",
+              "narration": "服务端用 ACK=101 确认客户端的 SYN，同时发送自己的初始序列号 300。",
+              "durationMs": 6000,
+              "actions": [
+                {
+                  "id": "synack-show",
+                  "type": "show",
+                  "target": "synack",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {}
+                },
+                {
+                  "id": "synack-sent",
+                  "type": "setState",
+                  "target": "synack",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "sending"
+                  }
+                },
+                {
+                  "id": "synack-focus",
+                  "type": "highlight",
+                  "target": "server",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "synack-hop-0",
+                  "type": "move",
+                  "target": "synack",
+                  "atMs": 800,
+                  "durationMs": 1100,
+                  "params": {
+                    "x": 614,
+                    "y": 359
+                  }
+                },
+                {
+                  "id": "synack-hop-1",
+                  "type": "move",
+                  "target": "synack",
+                  "atMs": 1900,
+                  "durationMs": 1100,
+                  "params": {
+                    "x": 404,
+                    "y": 254
+                  }
+                },
+                {
+                  "id": "synack-hop-2",
+                  "type": "move",
+                  "target": "synack",
+                  "atMs": 3000,
+                  "durationMs": 1100,
+                  "params": {
+                    "x": 129,
+                    "y": 344
+                  }
+                },
+                {
+                  "id": "synack-received",
+                  "type": "setState",
+                  "target": "synack",
+                  "atMs": 4100,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "received"
+                  }
+                },
+                {
+                  "id": "synack-arrive",
+                  "type": "highlight",
+                  "target": "client",
+                  "atMs": 4100,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "synack-hide",
+                  "type": "hide",
+                  "target": "synack",
+                  "atMs": 4800,
+                  "durationMs": 0,
+                  "params": {}
+                },
+                {
+                  "id": "synack-unfocus",
+                  "type": "highlight",
+                  "target": "server",
+                  "atMs": 5500,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "synack-unfocus-target",
+                  "type": "highlight",
+                  "target": "client",
+                  "atMs": 5500,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "synack-client-state",
+                  "type": "setState",
+                  "target": "client",
+                  "atMs": 4100,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "ESTABLISHED"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "s3",
+              "title": "连接建立",
+              "narration": "客户端用 ACK=301 确认服务端的 SYN。纯 ACK 不消耗序列号。",
+              "durationMs": 6000,
+              "actions": [
+                {
+                  "id": "ack-show",
+                  "type": "show",
+                  "target": "ack",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {}
+                },
+                {
+                  "id": "ack-sent",
+                  "type": "setState",
+                  "target": "ack",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "sending"
+                  }
+                },
+                {
+                  "id": "ack-focus",
+                  "type": "highlight",
+                  "target": "client",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "ack-hop-0",
+                  "type": "move",
+                  "target": "ack",
+                  "atMs": 800,
+                  "durationMs": 1100,
+                  "params": {
+                    "x": 404,
+                    "y": 254
+                  }
+                },
+                {
+                  "id": "ack-hop-1",
+                  "type": "move",
+                  "target": "ack",
+                  "atMs": 1900,
+                  "durationMs": 1100,
+                  "params": {
+                    "x": 614,
+                    "y": 359
+                  }
+                },
+                {
+                  "id": "ack-hop-2",
+                  "type": "move",
+                  "target": "ack",
+                  "atMs": 3000,
+                  "durationMs": 1100,
+                  "params": {
+                    "x": 809,
+                    "y": 144
+                  }
+                },
+                {
+                  "id": "ack-received",
+                  "type": "setState",
+                  "target": "ack",
+                  "atMs": 4100,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "received"
+                  }
+                },
+                {
+                  "id": "ack-arrive",
+                  "type": "highlight",
+                  "target": "server",
+                  "atMs": 4100,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "ack-hide",
+                  "type": "hide",
+                  "target": "ack",
+                  "atMs": 4800,
+                  "durationMs": 0,
+                  "params": {}
+                },
+                {
+                  "id": "ack-unfocus",
+                  "type": "highlight",
+                  "target": "client",
+                  "atMs": 5500,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "ack-unfocus-target",
+                  "type": "highlight",
+                  "target": "server",
+                  "atMs": 5500,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "ack-server-state",
+                  "type": "setState",
+                  "target": "server",
+                  "atMs": 4100,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "ESTABLISHED"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

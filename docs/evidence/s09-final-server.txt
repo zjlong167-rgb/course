@@ -1,0 +1,14 @@
+fca71d00e6cc516eab763c076388e9ca73b30d32a79175af8918270e8c16bd6d  application-images.tar.gz
+NAME                  IMAGE                 COMMAND                  SERVICE   CREATED          STATUS                    PORTS
+course-prod-api-1     course-api:20261113   "/app/bin/course-api"    api       24 minutes ago   Up 13 minutes (healthy)   
+course-prod-mysql-1   mysql:8.4.9           "docker-entrypoint.s��"   mysql     25 minutes ago   Up 24 minutes (healthy)   3306/tcp, 33060/tcp
+course-prod-web-1     course-web:20261113   "/docker-entrypoint.��"   web       21 minutes ago   Up 21 minutes (healthy)   0.0.0.0:80->80/tcp
+{"database":"mysql","status":"ok"} Container course-restore-web-1  Stopping
+ Container course-restore-web-1  Stopped
+ Container course-restore-api-1  Stopping
+ Container course-restore-api-1  Stopped
+ Container course-restore-migrate-1  Stopping
+ Container course-restore-migrate-1  Stopped
+ Container course-restore-mysql-1  Stopping
+ Container course-restore-mysql-1  Stopped
+

@@ -1,0 +1,92 @@
+{
+  "result": "passed",
+  "browser": "156.0.8078.80",
+  "pageErrors": [],
+  "consoleWarnings": [],
+  "results": [
+    {
+      "course": "tcp",
+      "width": 1440,
+      "timeMs": 4000,
+      "controls": "passed",
+      "sameTimeDomAndDetails": "passed"
+    },
+    {
+      "course": "expense",
+      "width": 1440,
+      "timeMs": 4000,
+      "controls": "passed",
+      "sameTimeDomAndDetails": "passed"
+    },
+    {
+      "course": "pythagoras",
+      "width": 1440,
+      "timeMs": 4000,
+      "controls": "passed",
+      "sameTimeDomAndDetails": "passed"
+    },
+    {
+      "course": "production",
+      "width": 1440,
+      "timeMs": 4000,
+      "controls": "passed",
+      "sameTimeDomAndDetails": "passed"
+    },
+    {
+      "course": "tcp",
+      "width": 390,
+      "timeMs": 4000,
+      "controls": "passed",
+      "sameTimeDomAndDetails": "passed"
+    },
+    {
+      "course": "expense",
+      "width": 390,
+      "timeMs": 4000,
+      "controls": "passed",
+      "sameTimeDomAndDetails": "passed"
+    },
+    {
+      "course": "pythagoras",
+      "width": 390,
+      "timeMs": 4000,
+      "controls": "passed",
+      "sameTimeDomAndDetails": "passed"
+    },
+    {
+      "course": "production",
+      "width": 390,
+      "timeMs": 4000,
+      "controls": "passed",
+      "sameTimeDomAndDetails": "passed"
+    },
+    {
+      "course": "tcp",
+      "width": 320,
+      "timeMs": 4000,
+      "controls": "passed",
+      "sameTimeDomAndDetails": "passed"
+    },
+    {
+      "course": "expense",
+      "width": 320,
+      "timeMs": 4000,
+      "controls": "passed",
+      "sameTimeDomAndDetails": "passed"
+    },
+    {
+      "course": "pythagoras",
+      "width": 320,
+      "timeMs": 4000,
+      "controls": "passed",
+      "sameTimeDomAndDetails": "passed"
+    },
+    {
+      "course": "production",
+      "width": 320,
+      "timeMs": 4000,
+      "controls": "passed",
+      "sameTimeDomAndDetails": "passed"
+    }
+  ]
+}

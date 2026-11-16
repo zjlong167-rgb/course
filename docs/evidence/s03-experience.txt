@@ -1,0 +1,5 @@
+
+> course-platform@0.1.0 test:experience
+> node scripts/check-experience.mjs
+
+PASS experience: 4 TCP widths, network/sequence, controls, selection, packet fields, keyboard; 3 other courses × 3 widths; 8 screenshots

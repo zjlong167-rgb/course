@@ -1,0 +1,32 @@
+=== RUN   TestContractStructure
+=== RUN   TestContractStructure/expense.json
+=== RUN   TestContractStructure/minimal.json
+=== RUN   TestContractStructure/production.json
+=== RUN   TestContractStructure/pythagoras.json
+=== RUN   TestContractStructure/tcp.json
+=== RUN   TestContractStructure/asset-reference.json
+=== RUN   TestContractStructure/duplicate-id.json
+=== RUN   TestContractStructure/move-params.json
+=== RUN   TestContractStructure/negative-time.json
+=== RUN   TestContractStructure/overflow.json
+=== RUN   TestContractStructure/reference.json
+=== RUN   TestContractStructure/version.json
+--- PASS: TestContractStructure (0.11s)
+    --- PASS: TestContractStructure/expense.json (0.00s)
+    --- PASS: TestContractStructure/minimal.json (0.00s)
+    --- PASS: TestContractStructure/production.json (0.00s)
+    --- PASS: TestContractStructure/pythagoras.json (0.00s)
+    --- PASS: TestContractStructure/tcp.json (0.00s)
+    --- PASS: TestContractStructure/asset-reference.json (0.00s)
+    --- PASS: TestContractStructure/duplicate-id.json (0.00s)
+    --- PASS: TestContractStructure/move-params.json (0.00s)
+    --- PASS: TestContractStructure/negative-time.json (0.01s)
+    --- PASS: TestContractStructure/overflow.json (0.01s)
+    --- PASS: TestContractStructure/reference.json (0.01s)
+    --- PASS: TestContractStructure/version.json (0.01s)
+=== RUN   TestDatabase
+    database_test.go:24: MySQL 8.4.13
+--- PASS: TestDatabase (0.05s)
+PASS
+ok  	course.local/backend	3.719s
+?   	course.local/backend/cmd/migrate	[no test files]

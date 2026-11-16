@@ -1,0 +1,155 @@
+=== RUN   TestContractStructure
+=== RUN   TestContractStructure/expense.json
+=== RUN   TestContractStructure/minimal.json
+=== RUN   TestContractStructure/production.json
+=== RUN   TestContractStructure/pythagoras.json
+=== RUN   TestContractStructure/tcp.json
+=== RUN   TestContractStructure/asset-reference.json
+=== RUN   TestContractStructure/duplicate-id.json
+=== RUN   TestContractStructure/move-params.json
+=== RUN   TestContractStructure/negative-time.json
+=== RUN   TestContractStructure/overflow.json
+=== RUN   TestContractStructure/reference.json
+=== RUN   TestContractStructure/version.json
+--- PASS: TestContractStructure (0.05s)
+    --- PASS: TestContractStructure/expense.json (0.00s)
+    --- PASS: TestContractStructure/minimal.json (0.00s)
+    --- PASS: TestContractStructure/production.json (0.00s)
+    --- PASS: TestContractStructure/pythagoras.json (0.00s)
+    --- PASS: TestContractStructure/tcp.json (0.00s)
+    --- PASS: TestContractStructure/asset-reference.json (0.00s)
+    --- PASS: TestContractStructure/duplicate-id.json (0.00s)
+    --- PASS: TestContractStructure/move-params.json (0.01s)
+    --- PASS: TestContractStructure/negative-time.json (0.00s)
+    --- PASS: TestContractStructure/overflow.json (0.00s)
+    --- PASS: TestContractStructure/reference.json (0.00s)
+    --- PASS: TestContractStructure/version.json (0.00s)
+=== RUN   TestDatabase
+    database_test.go:24: MySQL 8.4.13
+--- PASS: TestDatabase (0.01s)
+=== RUN   TestReleaseTransactions
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /api/v1/auth/login        --> course.local/backend.(*API).routes.func1 (1 handlers)
+[GIN-debug] POST   /api/v1/courses/:id/publish --> course.local/backend.(*API).versionRoutes.(*API).release.func7 (2 handlers)
+[GIN-debug] POST   /api/v1/courses/:id/rollback --> course.local/backend.(*API).versionRoutes.(*API).release.func8 (2 handlers)
+[GIN-debug] GET    /api/v1/courses/:id/versions --> course.local/backend.(*API).history-fm (2 handlers)
+[GIN-debug] GET    /api/v1/courses/:id/versions/:version --> course.local/backend.(*API).versionRoutes.func1 (2 handlers)
+[GIN-debug] GET    /api/v1/courses/:id/versions/:version/assets/:asset --> course.local/backend.(*API).versionRoutes.func2 (2 handlers)
+[GIN-debug] GET    /api/v1/public/courses    --> course.local/backend.(*API).versionRoutes.func4 (2 handlers)
+[GIN-debug] GET    /api/v1/public/courses/:slug --> course.local/backend.(*API).versionRoutes.func5 (2 handlers)
+[GIN-debug] GET    /api/v1/public/courses/:slug/versions/:version/assets/:asset --> course.local/backend.(*API).versionRoutes.func6 (2 handlers)
+[GIN-debug] GET    /api/v1/auth/me           --> course.local/backend.(*API).routes.func2 (2 handlers)
+[GIN-debug] POST   /api/v1/auth/logout       --> course.local/backend.(*API).routes.func3 (2 handlers)
+[GIN-debug] GET    /api/v1/courses           --> course.local/backend.(*API).routes.func4 (2 handlers)
+[GIN-debug] POST   /api/v1/courses           --> course.local/backend.(*API).routes.func5 (2 handlers)
+[GIN-debug] GET    /api/v1/courses/:id/draft --> course.local/backend.(*API).routes.func6 (2 handlers)
+[GIN-debug] GET    /api/v1/courses/:id/preview --> course.local/backend.(*API).routes.func6 (2 handlers)
+[GIN-debug] POST   /api/v1/courses/:id/validate --> course.local/backend.(*API).routes.func7 (2 handlers)
+[GIN-debug] PUT    /api/v1/courses/:id/draft --> course.local/backend.(*API).routes.func8 (2 handlers)
+[GIN-debug] POST   /api/v1/assets            --> course.local/backend.(*API).upload-fm (2 handlers)
+[GIN-debug] GET    /api/v1/assets/:id        --> course.local/backend.(*API).asset-fm (2 handlers)
+2026/11/13 11:18:08 course 123 operation log reached size limit
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /api/v1/auth/login        --> course.local/backend.(*API).routes.func1 (1 handlers)
+[GIN-debug] POST   /api/v1/courses/:id/publish --> course.local/backend.(*API).versionRoutes.(*API).release.func7 (2 handlers)
+[GIN-debug] POST   /api/v1/courses/:id/rollback --> course.local/backend.(*API).versionRoutes.(*API).release.func8 (2 handlers)
+[GIN-debug] GET    /api/v1/courses/:id/versions --> course.local/backend.(*API).history-fm (2 handlers)
+[GIN-debug] GET    /api/v1/courses/:id/versions/:version --> course.local/backend.(*API).versionRoutes.func1 (2 handlers)
+[GIN-debug] GET    /api/v1/courses/:id/versions/:version/assets/:asset --> course.local/backend.(*API).versionRoutes.func2 (2 handlers)
+[GIN-debug] GET    /api/v1/public/courses    --> course.local/backend.(*API).versionRoutes.func4 (2 handlers)
+[GIN-debug] GET    /api/v1/public/courses/:slug --> course.local/backend.(*API).versionRoutes.func5 (2 handlers)
+[GIN-debug] GET    /api/v1/public/courses/:slug/versions/:version/assets/:asset --> course.local/backend.(*API).versionRoutes.func6 (2 handlers)
+[GIN-debug] GET    /api/v1/auth/me           --> course.local/backend.(*API).routes.func2 (2 handlers)
+[GIN-debug] POST   /api/v1/auth/logout       --> course.local/backend.(*API).routes.func3 (2 handlers)
+[GIN-debug] GET    /api/v1/courses           --> course.local/backend.(*API).routes.func4 (2 handlers)
+[GIN-debug] POST   /api/v1/courses           --> course.local/backend.(*API).routes.func5 (2 handlers)
+[GIN-debug] GET    /api/v1/courses/:id/draft --> course.local/backend.(*API).routes.func6 (2 handlers)
+[GIN-debug] GET    /api/v1/courses/:id/preview --> course.local/backend.(*API).routes.func6 (2 handlers)
+[GIN-debug] POST   /api/v1/courses/:id/validate --> course.local/backend.(*API).routes.func7 (2 handlers)
+[GIN-debug] PUT    /api/v1/courses/:id/draft --> course.local/backend.(*API).routes.func8 (2 handlers)
+[GIN-debug] POST   /api/v1/assets            --> course.local/backend.(*API).upload-fm (2 handlers)
+[GIN-debug] GET    /api/v1/assets/:id        --> course.local/backend.(*API).asset-fm (2 handlers)
+    release_test.go:299: Insert failure and post-reference audit failure rolled back; retry succeeded. 18 concurrent requests -> 9 total snapshots, 16 connected audit entries, final pointer matches.
+--- PASS: TestReleaseTransactions (1.38s)
+=== RUN   TestSemanticParity
+=== RUN   TestSemanticParity/expense.json
+=== RUN   TestSemanticParity/minimal.json
+=== RUN   TestSemanticParity/production.json
+=== RUN   TestSemanticParity/pythagoras.json
+=== RUN   TestSemanticParity/tcp.json
+=== RUN   TestSemanticParity/asset-reference.json
+=== RUN   TestSemanticParity/duplicate-id.json
+=== RUN   TestSemanticParity/move-params.json
+=== RUN   TestSemanticParity/negative-time.json
+=== RUN   TestSemanticParity/overflow.json
+=== RUN   TestSemanticParity/reference.json
+=== RUN   TestSemanticParity/version.json
+=== RUN   TestSemanticParity/unsupported_version
+=== RUN   TestSemanticParity/duplicate_component
+=== RUN   TestSemanticParity/duplicate_asset
+=== RUN   TestSemanticParity/invalid_id
+=== RUN   TestSemanticParity/chapter_duplicate
+=== RUN   TestSemanticParity/object_component
+=== RUN   TestSemanticParity/missing_component
+=== RUN   TestSemanticParity/visual_object_kind
+=== RUN   TestSemanticParity/network_version
+=== RUN   TestSemanticParity/packet_endpoint
+=== RUN   TestSemanticParity/packet_endpoint_type
+=== RUN   TestSemanticParity/ACK_missing
+=== RUN   TestSemanticParity/packet_object_kind
+=== RUN   TestSemanticParity/edge_endpoint
+=== RUN   TestSemanticParity/action_target
+=== RUN   TestSemanticParity/action_overflow
+=== RUN   TestSemanticParity/discrete_duration
+=== RUN   TestSemanticParity/formula_missing_tex
+=== RUN   TestSemanticParity/geometry_missing_points
+=== RUN   TestSemanticParity/image_missing_asset
+=== NAME  TestSemanticParity
+    s03_test.go:47: JS/Go accepted/rejected same 32 cases
+--- PASS: TestSemanticParity (0.82s)
+    --- PASS: TestSemanticParity/expense.json (0.00s)
+    --- PASS: TestSemanticParity/minimal.json (0.00s)
+    --- PASS: TestSemanticParity/production.json (0.00s)
+    --- PASS: TestSemanticParity/pythagoras.json (0.00s)
+    --- PASS: TestSemanticParity/tcp.json (0.00s)
+    --- PASS: TestSemanticParity/asset-reference.json (0.00s)
+    --- PASS: TestSemanticParity/duplicate-id.json (0.00s)
+    --- PASS: TestSemanticParity/move-params.json (0.00s)
+    --- PASS: TestSemanticParity/negative-time.json (0.00s)
+    --- PASS: TestSemanticParity/overflow.json (0.00s)
+    --- PASS: TestSemanticParity/reference.json (0.00s)
+    --- PASS: TestSemanticParity/version.json (0.00s)
+    --- PASS: TestSemanticParity/unsupported_version (0.00s)
+    --- PASS: TestSemanticParity/duplicate_component (0.00s)
+    --- PASS: TestSemanticParity/duplicate_asset (0.00s)
+    --- PASS: TestSemanticParity/invalid_id (0.00s)
+    --- PASS: TestSemanticParity/chapter_duplicate (0.00s)
+    --- PASS: TestSemanticParity/object_component (0.00s)
+    --- PASS: TestSemanticParity/missing_component (0.00s)
+    --- PASS: TestSemanticParity/visual_object_kind (0.00s)
+    --- PASS: TestSemanticParity/network_version (0.00s)
+    --- PASS: TestSemanticParity/packet_endpoint (0.00s)
+    --- PASS: TestSemanticParity/packet_endpoint_type (0.00s)
+    --- PASS: TestSemanticParity/ACK_missing (0.00s)
+    --- PASS: TestSemanticParity/packet_object_kind (0.00s)
+    --- PASS: TestSemanticParity/edge_endpoint (0.00s)
+    --- PASS: TestSemanticParity/action_target (0.00s)
+    --- PASS: TestSemanticParity/action_overflow (0.00s)
+    --- PASS: TestSemanticParity/discrete_duration (0.00s)
+    --- PASS: TestSemanticParity/formula_missing_tex (0.00s)
+    --- PASS: TestSemanticParity/geometry_missing_points (0.00s)
+    --- PASS: TestSemanticParity/image_missing_asset (0.00s)
+=== RUN   TestS03DatabaseHTTP
+    s03_test.go:228: real MySQL: auth/owner/CSRF/disabled/logout, invalid body, 8 concurrent saves => 1 success + 7 conflicts, durable revision 2
+--- PASS: TestS03DatabaseHTTP (0.31s)
+=== RUN   TestS05ValidationLocations
+--- PASS: TestS05ValidationLocations (0.03s)
+PASS
+ok  	course.local/backend	5.465s
+?   	course.local/backend/cmd/migrate	[no test files]

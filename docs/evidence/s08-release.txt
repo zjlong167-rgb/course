@@ -1,0 +1,5 @@
+
+> course-platform@0.1.0 test:s06
+> node scripts/check-s06-browser.mjs
+
+PASS publish/republish/history/rollback, cache, metadata, protected resources and anonymous playback 132

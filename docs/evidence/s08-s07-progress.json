@@ -1,0 +1,10 @@
+{
+  "result": "passed",
+  "cases": 16,
+  "rules": [
+    "same version restore",
+    "unchanged scene migrate across publish or rollback, clear review flags",
+    "scene/object/step/content/duration changed invalidate",
+    "malformed records ignored"
+  ]
+}

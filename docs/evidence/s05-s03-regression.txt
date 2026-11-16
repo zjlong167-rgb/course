@@ -1,0 +1,6 @@
+
+> course-platform@0.1.0 test:s03
+> node scripts/check-s03-browser.mjs && node scripts/check-s03-api.mjs
+
+PASS S03 actual browser authoring / persistence / assets / conflict / navigation / auth
+PASS real HTTP auth, resource references, invalid MIME, upload limit, no-store

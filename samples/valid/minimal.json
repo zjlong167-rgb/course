@@ -1,0 +1,65 @@
+{
+  "formatVersion": "1.0.0",
+  "id": "minimal",
+  "title": "最小合法课程",
+  "summary": "TCP 三次握手的分步教学样例",
+  "category": "network",
+  "assets": [],
+  "components": [
+    {
+      "type": "flow",
+      "version": "1.0.0"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "chapter-1",
+      "title": "基础演示",
+      "scenes": [
+        {
+          "id": "scene-1",
+          "title": "TCP 三次握手",
+          "canvas": {
+            "width": 960,
+            "height": 540
+          },
+          "objects": [
+            {
+              "id": "client",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 80,
+                "y": 200
+              },
+              "size": {
+                "width": 140,
+                "height": 80
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "idle"
+              },
+              "content": {
+                "label": "客户端"
+              },
+              "details": {
+                "说明": "客户端"
+              }
+            }
+          ],
+          "steps": [
+            {
+              "id": "s1",
+              "title": "发送 SYN",
+              "narration": "客户端发送 SYN，进入 SYN-SENT；SYN 占用一个序号。",
+              "durationMs": 2000,
+              "actions": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

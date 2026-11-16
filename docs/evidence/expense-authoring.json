@@ -1,0 +1,62 @@
+{
+  "browser": "157.0.8103.51",
+  "results": [
+    {
+      "courseId": "课程 #144 / 修订 2",
+      "title": "S05 · 未命名课程 · 1794563126691",
+      "steps": 2,
+      "actions": 1,
+      "endMs": 6000,
+      "formRebuild": false,
+      "reopened": true,
+      "previewSnapshots": true,
+      "playedToEnd": true
+    },
+    {
+      "courseId": "课程 #145 / 修订 2",
+      "title": "S05 · TCP 三次握手 · 1794563132276",
+      "steps": 3,
+      "actions": 37,
+      "endMs": 18000,
+      "formRebuild": true,
+      "reopened": true,
+      "previewSnapshots": true,
+      "playedToEnd": true
+    },
+    {
+      "courseId": "课程 #146 / 修订 2",
+      "title": "S05 · 报销审批流程 · 1794563151314",
+      "steps": 6,
+      "actions": 112,
+      "endMs": 21000,
+      "formRebuild": true,
+      "reopened": true,
+      "previewSnapshots": true,
+      "playedToEnd": true
+    },
+    {
+      "courseId": "课程 #147 / 修订 2",
+      "title": "S05 · 勾股定理 · 1794563229839",
+      "steps": 3,
+      "actions": 3,
+      "endMs": 6000,
+      "formRebuild": true,
+      "reopened": true,
+      "previewSnapshots": true,
+      "playedToEnd": true
+    },
+    {
+      "courseId": "课程 #148 / 修订 2",
+      "title": "S05 · 生产加工流程 · 1794563235128",
+      "steps": 3,
+      "actions": 6,
+      "endMs": 6000,
+      "formRebuild": true,
+      "reopened": true,
+      "previewSnapshots": true,
+      "playedToEnd": true
+    }
+  ],
+  "errors": [],
+  "reference": "invalid GET fixture; real API validation; form repair saved"
+}

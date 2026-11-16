@@ -1,0 +1,35 @@
+{
+  "name": "course-platform",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w frontend",
+    "build": "npm run build -w frontend",
+    "check:contracts": "node scripts/check-contracts.mjs",
+    "check": "npm run check:contracts && npm run test:player && npm run test:network && npm run test:motion && npm run build",
+    "test:prototype": "node scripts/check-prototype.mjs",
+    "test:player": "node scripts/check-player.mjs",
+    "test:s02": "node scripts/check-s02-browser.mjs",
+    "test:network": "node scripts/check-network.mjs",
+    "test:experience": "node scripts/check-experience.mjs",
+    "test:motion": "node scripts/check-motion.mjs",
+    "test:motion-browser": "node scripts/check-motion-browser.mjs",
+    "test:s03": "node scripts/check-s03-browser.mjs && node scripts/check-s03-api.mjs",
+    "test:s04": "node scripts/check-s04-browser.mjs",
+    "test:s05": "node scripts/check-s05-templates.mjs && node scripts/check-s05-browser.mjs",
+    "test:s06": "node scripts/check-s06-browser.mjs",
+    "test:s07": "node scripts/check-s07-progress.mjs && node scripts/check-s07-browser.mjs && node scripts/check-s07-extra-browser.mjs",
+    "test:s08": "node scripts/check-s08-quality.mjs",
+    "test:s09:smoke": "node scripts/check-s09-smoke.mjs",
+    "test:s09:restore": "node scripts/check-s09-restore.mjs",
+    "test:expense": "node scripts/check-expense.mjs"
+  },
+  "devDependencies": {
+    "ajv": "8.20.0",
+    "playwright": "1.65.0"
+  }
+}

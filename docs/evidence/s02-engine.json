@@ -1,0 +1,40 @@
+{
+  "result": "passed",
+  "fixtureChecks": 5,
+  "snapshotChecks": 297,
+  "coverage": [
+    "overlapping moves",
+    "same-time precedence",
+    "step boundary",
+    "hidden movement",
+    "instant move",
+    "highlight cancellation",
+    "finite/clamped seek",
+    "clock pause/resume/visibility/end/replay",
+    "input and output isolation",
+    "exact component versions",
+    "extension rejection and dispatch"
+  ],
+  "courses": [
+    {
+      "course": "tcp",
+      "snapshots": 145,
+      "reverseSeekAndIsolation": "passed"
+    },
+    {
+      "course": "expense",
+      "snapshots": 49,
+      "reverseSeekAndIsolation": "passed"
+    },
+    {
+      "course": "pythagoras",
+      "snapshots": 49,
+      "reverseSeekAndIsolation": "passed"
+    },
+    {
+      "course": "production",
+      "snapshots": 49,
+      "reverseSeekAndIsolation": "passed"
+    }
+  ]
+}

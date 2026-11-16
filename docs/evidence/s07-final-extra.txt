@@ -1,0 +1,7 @@
+PASS [
+  'loading; playing course switch and scene link clears details, pauses at zero',
+  'network/sequence canvas and packet table horizontal scroll',
+  'math formula at derived step visible after canvas pan',
+  'production asset visible after canvas pan',
+  'empty scene body fails gracefully'
+]

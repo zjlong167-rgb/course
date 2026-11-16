@@ -1,0 +1,70 @@
+Sending build context to Docker daemon  3.072kB
+
+
+Step 1/2 : FROM course-web:20261113
+ ---> 56d0b36f7278
+Step 2/2 : COPY release-check.txt /usr/share/nginx/html/release-check.txt
+ ---> 26b3a52c7c71
+Successfully built 26b3a52c7c71
+Successfully tagged course-web:rollback-drill
+{"database":"mysql","status":"ok"}
+PASS application image tag upgrade and rollback; catalog bytes unchanged; original production untouched
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+ Container course-restore-mysql-1  Running
+ Container course-restore-migrate-1  Recreate
+ Container course-restore-migrate-1  Recreated
+ Container course-restore-api-1  Recreate
+ Container course-restore-api-1  Recreated
+ Container course-restore-web-1  Recreate
+ Container course-restore-web-1  Recreated
+ Container course-restore-mysql-1  Waiting
+ Container course-restore-mysql-1  Healthy
+ Container course-restore-migrate-1  Starting
+ Container course-restore-migrate-1  Started
+ Container course-restore-migrate-1  Waiting
+ Container course-restore-migrate-1  Exited
+ Container course-restore-api-1  Starting
+ Container course-restore-api-1  Started
+ Container course-restore-api-1  Waiting
+ Container course-restore-api-1  Healthy
+ Container course-restore-web-1  Starting
+ Container course-restore-web-1  Started
+ Container course-restore-web-1  Waiting
+ Container course-restore-mysql-1  Waiting
+ Container course-restore-migrate-1  Waiting
+ Container course-restore-api-1  Waiting
+ Container course-restore-api-1  Healthy
+ Container course-restore-migrate-1  Exited
+ Container course-restore-mysql-1  Healthy
+ Container course-restore-web-1  Healthy
+ Container course-restore-mysql-1  Running
+ Container course-restore-migrate-1  Recreate
+ Container course-restore-migrate-1  Recreated
+ Container course-restore-api-1  Recreate
+ Container course-restore-api-1  Recreated
+ Container course-restore-web-1  Recreate
+ Container course-restore-web-1  Recreated
+ Container course-restore-mysql-1  Waiting
+ Container course-restore-mysql-1  Healthy
+ Container course-restore-migrate-1  Starting
+ Container course-restore-migrate-1  Started
+ Container course-restore-migrate-1  Waiting
+ Container course-restore-migrate-1  Exited
+ Container course-restore-api-1  Starting
+ Container course-restore-api-1  Started
+ Container course-restore-api-1  Waiting
+ Container course-restore-api-1  Healthy
+ Container course-restore-web-1  Starting
+ Container course-restore-web-1  Started
+ Container course-restore-migrate-1  Waiting
+ Container course-restore-api-1  Waiting
+ Container course-restore-web-1  Waiting
+ Container course-restore-mysql-1  Waiting
+ Container course-restore-api-1  Healthy
+ Container course-restore-mysql-1  Healthy
+ Container course-restore-migrate-1  Exited
+ Container course-restore-web-1  Healthy
+

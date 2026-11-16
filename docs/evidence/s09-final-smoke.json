@@ -1,0 +1,70 @@
+{
+  "origin": "http://192.192.99.188",
+  "results": [
+    {
+      "channel": "chrome",
+      "version": "157.0.8103.51",
+      "course": "tcp",
+      "speed": 2,
+      "repeatSeek": true,
+      "viewportOnly": true
+    },
+    {
+      "channel": "chrome",
+      "version": "157.0.8103.51",
+      "course": "expense",
+      "speed": 2,
+      "repeatSeek": true,
+      "viewportOnly": true
+    },
+    {
+      "channel": "chrome",
+      "version": "157.0.8103.51",
+      "course": "pythagoras",
+      "speed": 2,
+      "repeatSeek": true,
+      "viewportOnly": true
+    },
+    {
+      "channel": "chrome",
+      "version": "157.0.8103.51",
+      "course": "production",
+      "speed": 2,
+      "repeatSeek": true,
+      "viewportOnly": true
+    },
+    {
+      "channel": "msedge",
+      "version": "141.0.3537.57",
+      "course": "tcp",
+      "speed": 2,
+      "repeatSeek": true,
+      "viewportOnly": true
+    },
+    {
+      "channel": "msedge",
+      "version": "141.0.3537.57",
+      "course": "expense",
+      "speed": 2,
+      "repeatSeek": true,
+      "viewportOnly": true
+    },
+    {
+      "channel": "msedge",
+      "version": "141.0.3537.57",
+      "course": "pythagoras",
+      "speed": 2,
+      "repeatSeek": true,
+      "viewportOnly": true
+    },
+    {
+      "channel": "msedge",
+      "version": "141.0.3537.57",
+      "course": "production",
+      "speed": 2,
+      "repeatSeek": true,
+      "viewportOnly": true
+    }
+  ],
+  "unauthorizedDraftAndPreview": 401
+}

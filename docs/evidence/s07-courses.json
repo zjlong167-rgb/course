@@ -1,0 +1,26 @@
+[
+  {
+    "name": "tcp",
+    "id": "125",
+    "slug": "course-3b58c021f58d25e1463a4fef91f6eb94",
+    "version": "88"
+  },
+  {
+    "name": "expense",
+    "id": "126",
+    "slug": "course-85bd81585a9ddd420d72c8fdff169ba6",
+    "version": "89"
+  },
+  {
+    "name": "pythagoras",
+    "id": "127",
+    "slug": "course-997ad0f42233a41ce6e8786b1d9acdd7",
+    "version": "90"
+  },
+  {
+    "name": "production",
+    "id": "128",
+    "slug": "course-fa11439f5af8e3088a60f1102bb3692b",
+    "version": "91"
+  }
+]

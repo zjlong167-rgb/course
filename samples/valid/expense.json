@@ -1,0 +1,5610 @@
+{
+  "formatVersion": "1.0.0",
+  "id": "expense",
+  "title": "报销审批流程",
+  "summary": "跟随一张报销单，理解正常审批、退回补正与超额加签：谁来处理、为什么流转、何时真正完成付款。",
+  "category": "business",
+  "assets": [],
+  "components": [
+    {
+      "type": "flow",
+      "version": "1.0.0"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "expense-chapter",
+      "title": "报销审批 · 三条预设路径",
+      "scenes": [
+        {
+          "id": "scene",
+          "title": "正常报销 · 材料齐全",
+          "canvas": {
+            "width": 1120,
+            "height": 660
+          },
+          "objects": [
+            {
+              "id": "employee",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 30,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "申请人"
+              },
+              "details": {
+                "职责": "整理费用明细、业务事由与票据；退回后补正并重新提交。"
+              }
+            },
+            {
+              "id": "manager",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 250,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "部门主管"
+              },
+              "details": {
+                "职责": "确认业务真实性、费用必要性与预算归属。"
+              }
+            },
+            {
+              "id": "finance",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 470,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "财务审核"
+              },
+              "details": {
+                "职责": "核验票据、金额及重复报销；审核通过后转付款。"
+              }
+            },
+            {
+              "id": "cashier",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 690,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "出纳付款"
+              },
+              "details": {
+                "职责": "依据审批结果核对收款信息并执行付款，付款成功后登记回单。"
+              }
+            },
+            {
+              "id": "archive",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 910,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "归档留痕"
+              },
+              "details": {
+                "职责": "关联申请、票据、审批记录和付款回单，供后续查询。"
+              }
+            },
+            {
+              "id": "director",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 470,
+                "y": 40
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "授权负责人"
+              },
+              "details": {
+                "职责": "超出示例授权额度时加签；以企业实际授权制度为准。"
+              }
+            },
+            {
+              "id": "correction",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 250,
+                "y": 520
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "退回补正"
+              },
+              "details": {
+                "职责": "说明缺失材料及原因；补正后重新送审，不直接付款。"
+              }
+            },
+            {
+              "id": "bill",
+              "type": "packet",
+              "component": "flow",
+              "position": {
+                "x": 40,
+                "y": 205
+              },
+              "size": {
+                "width": 150,
+                "height": 68
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "报销单 · ¥800"
+              },
+              "details": {
+                "职责": "教学单据：差旅费用；金额与规则均为示例。"
+              }
+            },
+            {
+              "id": "submit",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "提交申请",
+                "source": "employee",
+                "target": "manager"
+              },
+              "details": {
+                "路径": "申请人 → 部门主管",
+                "说明": "提交申请"
+              }
+            },
+            {
+              "id": "approve",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "主管同意",
+                "source": "manager",
+                "target": "finance"
+              },
+              "details": {
+                "路径": "部门主管 → 财务审核",
+                "说明": "主管同意"
+              }
+            },
+            {
+              "id": "verify",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "核验通过",
+                "source": "finance",
+                "target": "cashier"
+              },
+              "details": {
+                "路径": "财务审核 → 出纳付款",
+                "说明": "核验通过"
+              }
+            },
+            {
+              "id": "pay",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "付款成功",
+                "source": "cashier",
+                "target": "archive"
+              },
+              "details": {
+                "路径": "出纳付款 → 归档留痕",
+                "说明": "付款成功"
+              }
+            },
+            {
+              "id": "escalate",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "超额加签",
+                "source": "manager",
+                "target": "director"
+              },
+              "details": {
+                "路径": "部门主管 → 授权负责人",
+                "说明": "超额加签"
+              }
+            },
+            {
+              "id": "authorize",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "授权通过",
+                "source": "director",
+                "target": "finance"
+              },
+              "details": {
+                "路径": "授权负责人 → 财务审核",
+                "说明": "授权通过"
+              }
+            },
+            {
+              "id": "return",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "材料缺失",
+                "source": "finance",
+                "target": "correction"
+              },
+              "details": {
+                "路径": "财务审核 → 退回补正",
+                "说明": "材料缺失"
+              }
+            },
+            {
+              "id": "revise",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "补正重提",
+                "source": "correction",
+                "target": "employee"
+              },
+              "details": {
+                "路径": "退回补正 → 申请人",
+                "说明": "补正重提"
+              }
+            }
+          ],
+          "steps": [
+            {
+              "id": "step-0",
+              "title": "整理报销材料",
+              "narration": "申请人汇总 ¥800 差旅费用，填写业务事由、费用明细并附票据。金额、额度和审批规则仅为教学示例，实际以企业制度为准。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "action-0-0",
+                  "type": "highlight",
+                  "target": "employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "action-0-1",
+                  "type": "highlight",
+                  "target": "manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-0-2",
+                  "type": "highlight",
+                  "target": "finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-0-3",
+                  "type": "highlight",
+                  "target": "cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-0-4",
+                  "type": "highlight",
+                  "target": "archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-0-5",
+                  "type": "highlight",
+                  "target": "director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-0-6",
+                  "type": "highlight",
+                  "target": "correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-0-7",
+                  "type": "highlight",
+                  "target": "submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-0-8",
+                  "type": "highlight",
+                  "target": "approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-0-9",
+                  "type": "highlight",
+                  "target": "verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-0-10",
+                  "type": "highlight",
+                  "target": "pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-0-11",
+                  "type": "highlight",
+                  "target": "escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-0-12",
+                  "type": "highlight",
+                  "target": "authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-0-13",
+                  "type": "highlight",
+                  "target": "return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-0-14",
+                  "type": "highlight",
+                  "target": "revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-0-15",
+                  "type": "setState",
+                  "target": "bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待提交"
+                  }
+                },
+                {
+                  "id": "action-0-16",
+                  "type": "setState",
+                  "target": "employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待提交"
+                  }
+                },
+                {
+                  "id": "action-0-17",
+                  "type": "move",
+                  "target": "bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 40,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "step-1",
+              "title": "提交主管审批",
+              "narration": "提交后形成可追踪的单据。主管确认业务是否真实、费用是否必要以及预算归属；提交不代表审批通过。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "action-1-0",
+                  "type": "highlight",
+                  "target": "employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-1-1",
+                  "type": "highlight",
+                  "target": "manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "action-1-2",
+                  "type": "highlight",
+                  "target": "finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-1-3",
+                  "type": "highlight",
+                  "target": "cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-1-4",
+                  "type": "highlight",
+                  "target": "archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-1-5",
+                  "type": "highlight",
+                  "target": "director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-1-6",
+                  "type": "highlight",
+                  "target": "correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-1-7",
+                  "type": "highlight",
+                  "target": "submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "action-1-8",
+                  "type": "highlight",
+                  "target": "approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-1-9",
+                  "type": "highlight",
+                  "target": "verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-1-10",
+                  "type": "highlight",
+                  "target": "pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-1-11",
+                  "type": "highlight",
+                  "target": "escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-1-12",
+                  "type": "highlight",
+                  "target": "authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-1-13",
+                  "type": "highlight",
+                  "target": "return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-1-14",
+                  "type": "highlight",
+                  "target": "revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-1-15",
+                  "type": "setState",
+                  "target": "employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "action-1-16",
+                  "type": "setState",
+                  "target": "bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待主管审批"
+                  }
+                },
+                {
+                  "id": "action-1-17",
+                  "type": "setState",
+                  "target": "manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待主管审批"
+                  }
+                },
+                {
+                  "id": "action-1-18",
+                  "type": "move",
+                  "target": "bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 260,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "step-2",
+              "title": "主管审核通过",
+              "narration": "主管确认业务事由与预算，审批同意后交财务审核。若业务不合理，应说明原因并退回，本场景演示同意路径。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "action-2-0",
+                  "type": "highlight",
+                  "target": "employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-2-1",
+                  "type": "highlight",
+                  "target": "manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-2-2",
+                  "type": "highlight",
+                  "target": "finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "action-2-3",
+                  "type": "highlight",
+                  "target": "cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-2-4",
+                  "type": "highlight",
+                  "target": "archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-2-5",
+                  "type": "highlight",
+                  "target": "director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-2-6",
+                  "type": "highlight",
+                  "target": "correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-2-7",
+                  "type": "highlight",
+                  "target": "submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-2-8",
+                  "type": "highlight",
+                  "target": "approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "action-2-9",
+                  "type": "highlight",
+                  "target": "verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-2-10",
+                  "type": "highlight",
+                  "target": "pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-2-11",
+                  "type": "highlight",
+                  "target": "escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-2-12",
+                  "type": "highlight",
+                  "target": "authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-2-13",
+                  "type": "highlight",
+                  "target": "return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-2-14",
+                  "type": "highlight",
+                  "target": "revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-2-15",
+                  "type": "setState",
+                  "target": "manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "action-2-16",
+                  "type": "setState",
+                  "target": "bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "主管已通过"
+                  }
+                },
+                {
+                  "id": "action-2-17",
+                  "type": "setState",
+                  "target": "finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "主管已通过"
+                  }
+                },
+                {
+                  "id": "action-2-18",
+                  "type": "move",
+                  "target": "bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 480,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "step-3",
+              "title": "财务核验票据",
+              "narration": "财务核对票据、费用明细与审批记录，排查重复报销。材料有误时走下方退回补正路径；本场景材料齐全。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "action-3-0",
+                  "type": "highlight",
+                  "target": "employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-3-1",
+                  "type": "highlight",
+                  "target": "manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-3-2",
+                  "type": "highlight",
+                  "target": "finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "action-3-3",
+                  "type": "highlight",
+                  "target": "cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-3-4",
+                  "type": "highlight",
+                  "target": "archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-3-5",
+                  "type": "highlight",
+                  "target": "director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-3-6",
+                  "type": "highlight",
+                  "target": "correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-3-7",
+                  "type": "highlight",
+                  "target": "submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-3-8",
+                  "type": "highlight",
+                  "target": "approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-3-9",
+                  "type": "highlight",
+                  "target": "verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-3-10",
+                  "type": "highlight",
+                  "target": "pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-3-11",
+                  "type": "highlight",
+                  "target": "escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-3-12",
+                  "type": "highlight",
+                  "target": "authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-3-13",
+                  "type": "highlight",
+                  "target": "return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-3-14",
+                  "type": "highlight",
+                  "target": "revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-3-15",
+                  "type": "setState",
+                  "target": "bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "核验通过"
+                  }
+                },
+                {
+                  "id": "action-3-16",
+                  "type": "setState",
+                  "target": "finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "核验通过"
+                  }
+                },
+                {
+                  "id": "action-3-17",
+                  "type": "move",
+                  "target": "bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 480,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "step-4",
+              "title": "出纳执行付款",
+              "narration": "审核通过后，出纳核对收款信息并执行付款。此时仍在付款处理中，不能提前标记已支付。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "action-4-0",
+                  "type": "highlight",
+                  "target": "employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-4-1",
+                  "type": "highlight",
+                  "target": "manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-4-2",
+                  "type": "highlight",
+                  "target": "finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-4-3",
+                  "type": "highlight",
+                  "target": "cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "action-4-4",
+                  "type": "highlight",
+                  "target": "archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-4-5",
+                  "type": "highlight",
+                  "target": "director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-4-6",
+                  "type": "highlight",
+                  "target": "correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-4-7",
+                  "type": "highlight",
+                  "target": "submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-4-8",
+                  "type": "highlight",
+                  "target": "approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-4-9",
+                  "type": "highlight",
+                  "target": "verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "action-4-10",
+                  "type": "highlight",
+                  "target": "pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-4-11",
+                  "type": "highlight",
+                  "target": "escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-4-12",
+                  "type": "highlight",
+                  "target": "authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-4-13",
+                  "type": "highlight",
+                  "target": "return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-4-14",
+                  "type": "highlight",
+                  "target": "revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-4-15",
+                  "type": "setState",
+                  "target": "finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "action-4-16",
+                  "type": "setState",
+                  "target": "bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "付款中"
+                  }
+                },
+                {
+                  "id": "action-4-17",
+                  "type": "setState",
+                  "target": "cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "付款中"
+                  }
+                },
+                {
+                  "id": "action-4-18",
+                  "type": "move",
+                  "target": "bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 700,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "step-5",
+              "title": "确认到账并归档",
+              "narration": "本例付款成功，登记付款回单，将单据、票据、审批与回单关联归档。只有确认付款成功后，单据才进入已支付状态。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "action-5-0",
+                  "type": "highlight",
+                  "target": "employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-5-1",
+                  "type": "highlight",
+                  "target": "manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-5-2",
+                  "type": "highlight",
+                  "target": "finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-5-3",
+                  "type": "highlight",
+                  "target": "cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-5-4",
+                  "type": "highlight",
+                  "target": "archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "action-5-5",
+                  "type": "highlight",
+                  "target": "director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-5-6",
+                  "type": "highlight",
+                  "target": "correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-5-7",
+                  "type": "highlight",
+                  "target": "submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-5-8",
+                  "type": "highlight",
+                  "target": "approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-5-9",
+                  "type": "highlight",
+                  "target": "verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-5-10",
+                  "type": "highlight",
+                  "target": "pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "action-5-11",
+                  "type": "highlight",
+                  "target": "escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-5-12",
+                  "type": "highlight",
+                  "target": "authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-5-13",
+                  "type": "highlight",
+                  "target": "return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-5-14",
+                  "type": "highlight",
+                  "target": "revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "action-5-15",
+                  "type": "setState",
+                  "target": "cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "action-5-16",
+                  "type": "setState",
+                  "target": "bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "paid"
+                  }
+                },
+                {
+                  "id": "action-5-17",
+                  "type": "setState",
+                  "target": "archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "paid"
+                  }
+                },
+                {
+                  "id": "action-5-18",
+                  "type": "move",
+                  "target": "bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 920,
+                    "y": 205
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "return-scene",
+          "title": "退回补正 · 缺少附件",
+          "canvas": {
+            "width": 1120,
+            "height": 660
+          },
+          "objects": [
+            {
+              "id": "return-employee",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 30,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "申请人"
+              },
+              "details": {
+                "职责": "整理费用明细、业务事由与票据；退回后补正并重新提交。"
+              }
+            },
+            {
+              "id": "return-manager",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 250,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "部门主管"
+              },
+              "details": {
+                "职责": "确认业务真实性、费用必要性与预算归属。"
+              }
+            },
+            {
+              "id": "return-finance",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 470,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "财务审核"
+              },
+              "details": {
+                "职责": "核验票据、金额及重复报销；审核通过后转付款。"
+              }
+            },
+            {
+              "id": "return-cashier",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 690,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "出纳付款"
+              },
+              "details": {
+                "职责": "依据审批结果核对收款信息并执行付款，付款成功后登记回单。"
+              }
+            },
+            {
+              "id": "return-archive",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 910,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "归档留痕"
+              },
+              "details": {
+                "职责": "关联申请、票据、审批记录和付款回单，供后续查询。"
+              }
+            },
+            {
+              "id": "return-director",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 470,
+                "y": 40
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "授权负责人"
+              },
+              "details": {
+                "职责": "超出示例授权额度时加签；以企业实际授权制度为准。"
+              }
+            },
+            {
+              "id": "return-correction",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 250,
+                "y": 520
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "退回补正"
+              },
+              "details": {
+                "职责": "说明缺失材料及原因；补正后重新送审，不直接付款。"
+              }
+            },
+            {
+              "id": "return-bill",
+              "type": "packet",
+              "component": "flow",
+              "position": {
+                "x": 40,
+                "y": 205
+              },
+              "size": {
+                "width": 150,
+                "height": 68
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "报销单 · ¥800"
+              },
+              "details": {
+                "职责": "教学单据：差旅费用；金额与规则均为示例。"
+              }
+            },
+            {
+              "id": "return-submit",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "提交申请",
+                "source": "return-employee",
+                "target": "return-manager"
+              },
+              "details": {
+                "路径": "申请人 → 部门主管",
+                "说明": "提交申请"
+              }
+            },
+            {
+              "id": "return-approve",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "主管同意",
+                "source": "return-manager",
+                "target": "return-finance"
+              },
+              "details": {
+                "路径": "部门主管 → 财务审核",
+                "说明": "主管同意"
+              }
+            },
+            {
+              "id": "return-verify",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "核验通过",
+                "source": "return-finance",
+                "target": "return-cashier"
+              },
+              "details": {
+                "路径": "财务审核 → 出纳付款",
+                "说明": "核验通过"
+              }
+            },
+            {
+              "id": "return-pay",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "付款成功",
+                "source": "return-cashier",
+                "target": "return-archive"
+              },
+              "details": {
+                "路径": "出纳付款 → 归档留痕",
+                "说明": "付款成功"
+              }
+            },
+            {
+              "id": "return-escalate",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "超额加签",
+                "source": "return-manager",
+                "target": "return-director"
+              },
+              "details": {
+                "路径": "部门主管 → 授权负责人",
+                "说明": "超额加签"
+              }
+            },
+            {
+              "id": "return-authorize",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "授权通过",
+                "source": "return-director",
+                "target": "return-finance"
+              },
+              "details": {
+                "路径": "授权负责人 → 财务审核",
+                "说明": "授权通过"
+              }
+            },
+            {
+              "id": "return-return",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "材料缺失",
+                "source": "return-finance",
+                "target": "return-correction"
+              },
+              "details": {
+                "路径": "财务审核 → 退回补正",
+                "说明": "材料缺失"
+              }
+            },
+            {
+              "id": "return-revise",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "补正重提",
+                "source": "return-correction",
+                "target": "return-employee"
+              },
+              "details": {
+                "路径": "退回补正 → 申请人",
+                "说明": "补正重提"
+              }
+            }
+          ],
+          "steps": [
+            {
+              "id": "return-step-0",
+              "title": "整理报销材料",
+              "narration": "申请人汇总 ¥800 差旅费用，填写业务事由、费用明细并附票据。金额、额度和审批规则仅为教学示例，实际以企业制度为准。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "return-action-0-0",
+                  "type": "highlight",
+                  "target": "return-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-0-1",
+                  "type": "highlight",
+                  "target": "return-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-0-2",
+                  "type": "highlight",
+                  "target": "return-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-0-3",
+                  "type": "highlight",
+                  "target": "return-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-0-4",
+                  "type": "highlight",
+                  "target": "return-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-0-5",
+                  "type": "highlight",
+                  "target": "return-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-0-6",
+                  "type": "highlight",
+                  "target": "return-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-0-7",
+                  "type": "highlight",
+                  "target": "return-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-0-8",
+                  "type": "highlight",
+                  "target": "return-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-0-9",
+                  "type": "highlight",
+                  "target": "return-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-0-10",
+                  "type": "highlight",
+                  "target": "return-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-0-11",
+                  "type": "highlight",
+                  "target": "return-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-0-12",
+                  "type": "highlight",
+                  "target": "return-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-0-13",
+                  "type": "highlight",
+                  "target": "return-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-0-14",
+                  "type": "highlight",
+                  "target": "return-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-0-15",
+                  "type": "setState",
+                  "target": "return-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待提交"
+                  }
+                },
+                {
+                  "id": "return-action-0-16",
+                  "type": "setState",
+                  "target": "return-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待提交"
+                  }
+                },
+                {
+                  "id": "return-action-0-17",
+                  "type": "move",
+                  "target": "return-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 40,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "return-step-1",
+              "title": "提交主管审批",
+              "narration": "提交后形成可追踪的单据。主管确认业务是否真实、费用是否必要以及预算归属；提交不代表审批通过。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "return-action-1-0",
+                  "type": "highlight",
+                  "target": "return-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-1-1",
+                  "type": "highlight",
+                  "target": "return-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-1-2",
+                  "type": "highlight",
+                  "target": "return-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-1-3",
+                  "type": "highlight",
+                  "target": "return-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-1-4",
+                  "type": "highlight",
+                  "target": "return-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-1-5",
+                  "type": "highlight",
+                  "target": "return-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-1-6",
+                  "type": "highlight",
+                  "target": "return-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-1-7",
+                  "type": "highlight",
+                  "target": "return-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-1-8",
+                  "type": "highlight",
+                  "target": "return-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-1-9",
+                  "type": "highlight",
+                  "target": "return-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-1-10",
+                  "type": "highlight",
+                  "target": "return-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-1-11",
+                  "type": "highlight",
+                  "target": "return-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-1-12",
+                  "type": "highlight",
+                  "target": "return-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-1-13",
+                  "type": "highlight",
+                  "target": "return-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-1-14",
+                  "type": "highlight",
+                  "target": "return-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-1-15",
+                  "type": "setState",
+                  "target": "return-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "return-action-1-16",
+                  "type": "setState",
+                  "target": "return-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待主管审批"
+                  }
+                },
+                {
+                  "id": "return-action-1-17",
+                  "type": "setState",
+                  "target": "return-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待主管审批"
+                  }
+                },
+                {
+                  "id": "return-action-1-18",
+                  "type": "move",
+                  "target": "return-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 260,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "return-step-2",
+              "title": "主管审核通过",
+              "narration": "主管确认业务事由与预算，审批同意后交财务审核。若业务不合理，应说明原因并退回，本场景演示同意路径。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "return-action-2-0",
+                  "type": "highlight",
+                  "target": "return-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-2-1",
+                  "type": "highlight",
+                  "target": "return-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-2-2",
+                  "type": "highlight",
+                  "target": "return-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-2-3",
+                  "type": "highlight",
+                  "target": "return-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-2-4",
+                  "type": "highlight",
+                  "target": "return-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-2-5",
+                  "type": "highlight",
+                  "target": "return-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-2-6",
+                  "type": "highlight",
+                  "target": "return-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-2-7",
+                  "type": "highlight",
+                  "target": "return-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-2-8",
+                  "type": "highlight",
+                  "target": "return-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-2-9",
+                  "type": "highlight",
+                  "target": "return-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-2-10",
+                  "type": "highlight",
+                  "target": "return-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-2-11",
+                  "type": "highlight",
+                  "target": "return-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-2-12",
+                  "type": "highlight",
+                  "target": "return-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-2-13",
+                  "type": "highlight",
+                  "target": "return-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-2-14",
+                  "type": "highlight",
+                  "target": "return-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-2-15",
+                  "type": "setState",
+                  "target": "return-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "return-action-2-16",
+                  "type": "setState",
+                  "target": "return-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "主管已通过"
+                  }
+                },
+                {
+                  "id": "return-action-2-17",
+                  "type": "setState",
+                  "target": "return-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "主管已通过"
+                  }
+                },
+                {
+                  "id": "return-action-2-18",
+                  "type": "move",
+                  "target": "return-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 480,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "return-step-3",
+              "title": "财务退回补正",
+              "narration": "财务发现缺少行程附件，记录退回原因和需要补充的材料。单据回到申请人处理，不能进入付款环节。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "return-action-3-0",
+                  "type": "highlight",
+                  "target": "return-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-3-1",
+                  "type": "highlight",
+                  "target": "return-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-3-2",
+                  "type": "highlight",
+                  "target": "return-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-3-3",
+                  "type": "highlight",
+                  "target": "return-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-3-4",
+                  "type": "highlight",
+                  "target": "return-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-3-5",
+                  "type": "highlight",
+                  "target": "return-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-3-6",
+                  "type": "highlight",
+                  "target": "return-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-3-7",
+                  "type": "highlight",
+                  "target": "return-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-3-8",
+                  "type": "highlight",
+                  "target": "return-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-3-9",
+                  "type": "highlight",
+                  "target": "return-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-3-10",
+                  "type": "highlight",
+                  "target": "return-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-3-11",
+                  "type": "highlight",
+                  "target": "return-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-3-12",
+                  "type": "highlight",
+                  "target": "return-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-3-13",
+                  "type": "highlight",
+                  "target": "return-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-3-14",
+                  "type": "highlight",
+                  "target": "return-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-3-15",
+                  "type": "setState",
+                  "target": "return-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "return-action-3-16",
+                  "type": "setState",
+                  "target": "return-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待补正"
+                  }
+                },
+                {
+                  "id": "return-action-3-17",
+                  "type": "setState",
+                  "target": "return-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待补正"
+                  }
+                },
+                {
+                  "id": "return-action-3-18",
+                  "type": "move",
+                  "target": "return-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 450,
+                    "y": 540
+                  }
+                }
+              ]
+            },
+            {
+              "id": "return-step-4",
+              "title": "补齐附件并重提",
+              "narration": "申请人补充行程附件并核对明细。本例要求重新经过主管和财务审核，保留退回与重提记录。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "return-action-4-0",
+                  "type": "highlight",
+                  "target": "return-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-4-1",
+                  "type": "highlight",
+                  "target": "return-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-4-2",
+                  "type": "highlight",
+                  "target": "return-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-4-3",
+                  "type": "highlight",
+                  "target": "return-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-4-4",
+                  "type": "highlight",
+                  "target": "return-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-4-5",
+                  "type": "highlight",
+                  "target": "return-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-4-6",
+                  "type": "highlight",
+                  "target": "return-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-4-7",
+                  "type": "highlight",
+                  "target": "return-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-4-8",
+                  "type": "highlight",
+                  "target": "return-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-4-9",
+                  "type": "highlight",
+                  "target": "return-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-4-10",
+                  "type": "highlight",
+                  "target": "return-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-4-11",
+                  "type": "highlight",
+                  "target": "return-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-4-12",
+                  "type": "highlight",
+                  "target": "return-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-4-13",
+                  "type": "highlight",
+                  "target": "return-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-4-14",
+                  "type": "highlight",
+                  "target": "return-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-4-15",
+                  "type": "setState",
+                  "target": "return-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "return-action-4-16",
+                  "type": "setState",
+                  "target": "return-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已补正"
+                  }
+                },
+                {
+                  "id": "return-action-4-17",
+                  "type": "setState",
+                  "target": "return-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已补正"
+                  }
+                },
+                {
+                  "id": "return-action-4-18",
+                  "type": "move",
+                  "target": "return-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 40,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "return-step-5",
+              "title": "主管重新确认",
+              "narration": "主管复核补充的业务材料，同意后再次交财务。退回前的审核结果不用于跳过本次复核。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "return-action-5-0",
+                  "type": "highlight",
+                  "target": "return-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-5-1",
+                  "type": "highlight",
+                  "target": "return-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-5-2",
+                  "type": "highlight",
+                  "target": "return-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-5-3",
+                  "type": "highlight",
+                  "target": "return-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-5-4",
+                  "type": "highlight",
+                  "target": "return-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-5-5",
+                  "type": "highlight",
+                  "target": "return-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-5-6",
+                  "type": "highlight",
+                  "target": "return-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-5-7",
+                  "type": "highlight",
+                  "target": "return-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-5-8",
+                  "type": "highlight",
+                  "target": "return-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-5-9",
+                  "type": "highlight",
+                  "target": "return-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-5-10",
+                  "type": "highlight",
+                  "target": "return-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-5-11",
+                  "type": "highlight",
+                  "target": "return-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-5-12",
+                  "type": "highlight",
+                  "target": "return-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-5-13",
+                  "type": "highlight",
+                  "target": "return-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-5-14",
+                  "type": "highlight",
+                  "target": "return-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-5-15",
+                  "type": "setState",
+                  "target": "return-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "return-action-5-16",
+                  "type": "setState",
+                  "target": "return-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "重新审批通过"
+                  }
+                },
+                {
+                  "id": "return-action-5-17",
+                  "type": "setState",
+                  "target": "return-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "重新审批通过"
+                  }
+                },
+                {
+                  "id": "return-action-5-18",
+                  "type": "move",
+                  "target": "return-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 260,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "return-step-6",
+              "title": "财务再次核验",
+              "narration": "财务重新核对票据与附件，材料完整且金额一致后通过。演示的异常已经消除。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "return-action-6-0",
+                  "type": "highlight",
+                  "target": "return-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-6-1",
+                  "type": "highlight",
+                  "target": "return-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-6-2",
+                  "type": "highlight",
+                  "target": "return-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-6-3",
+                  "type": "highlight",
+                  "target": "return-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-6-4",
+                  "type": "highlight",
+                  "target": "return-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-6-5",
+                  "type": "highlight",
+                  "target": "return-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-6-6",
+                  "type": "highlight",
+                  "target": "return-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-6-7",
+                  "type": "highlight",
+                  "target": "return-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-6-8",
+                  "type": "highlight",
+                  "target": "return-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-6-9",
+                  "type": "highlight",
+                  "target": "return-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-6-10",
+                  "type": "highlight",
+                  "target": "return-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-6-11",
+                  "type": "highlight",
+                  "target": "return-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-6-12",
+                  "type": "highlight",
+                  "target": "return-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-6-13",
+                  "type": "highlight",
+                  "target": "return-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-6-14",
+                  "type": "highlight",
+                  "target": "return-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-6-15",
+                  "type": "setState",
+                  "target": "return-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "return-action-6-16",
+                  "type": "setState",
+                  "target": "return-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "核验通过"
+                  }
+                },
+                {
+                  "id": "return-action-6-17",
+                  "type": "setState",
+                  "target": "return-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "核验通过"
+                  }
+                },
+                {
+                  "id": "return-action-6-18",
+                  "type": "move",
+                  "target": "return-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 480,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "return-step-7",
+              "title": "出纳执行付款",
+              "narration": "审核通过后，出纳核对收款信息并执行付款。此时仍在付款处理中，不能提前标记已支付。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "return-action-7-0",
+                  "type": "highlight",
+                  "target": "return-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-7-1",
+                  "type": "highlight",
+                  "target": "return-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-7-2",
+                  "type": "highlight",
+                  "target": "return-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-7-3",
+                  "type": "highlight",
+                  "target": "return-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-7-4",
+                  "type": "highlight",
+                  "target": "return-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-7-5",
+                  "type": "highlight",
+                  "target": "return-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-7-6",
+                  "type": "highlight",
+                  "target": "return-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-7-7",
+                  "type": "highlight",
+                  "target": "return-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-7-8",
+                  "type": "highlight",
+                  "target": "return-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-7-9",
+                  "type": "highlight",
+                  "target": "return-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-7-10",
+                  "type": "highlight",
+                  "target": "return-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-7-11",
+                  "type": "highlight",
+                  "target": "return-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-7-12",
+                  "type": "highlight",
+                  "target": "return-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-7-13",
+                  "type": "highlight",
+                  "target": "return-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-7-14",
+                  "type": "highlight",
+                  "target": "return-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-7-15",
+                  "type": "setState",
+                  "target": "return-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "return-action-7-16",
+                  "type": "setState",
+                  "target": "return-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "付款中"
+                  }
+                },
+                {
+                  "id": "return-action-7-17",
+                  "type": "setState",
+                  "target": "return-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "付款中"
+                  }
+                },
+                {
+                  "id": "return-action-7-18",
+                  "type": "move",
+                  "target": "return-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 700,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "return-step-8",
+              "title": "确认到账并归档",
+              "narration": "本例付款成功，登记付款回单，将单据、票据、审批与回单关联归档。只有确认付款成功后，单据才进入已支付状态。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "return-action-8-0",
+                  "type": "highlight",
+                  "target": "return-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-8-1",
+                  "type": "highlight",
+                  "target": "return-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-8-2",
+                  "type": "highlight",
+                  "target": "return-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-8-3",
+                  "type": "highlight",
+                  "target": "return-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-8-4",
+                  "type": "highlight",
+                  "target": "return-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-8-5",
+                  "type": "highlight",
+                  "target": "return-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-8-6",
+                  "type": "highlight",
+                  "target": "return-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-8-7",
+                  "type": "highlight",
+                  "target": "return-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-8-8",
+                  "type": "highlight",
+                  "target": "return-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-8-9",
+                  "type": "highlight",
+                  "target": "return-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-8-10",
+                  "type": "highlight",
+                  "target": "return-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "return-action-8-11",
+                  "type": "highlight",
+                  "target": "return-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-8-12",
+                  "type": "highlight",
+                  "target": "return-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-8-13",
+                  "type": "highlight",
+                  "target": "return-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-8-14",
+                  "type": "highlight",
+                  "target": "return-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "return-action-8-15",
+                  "type": "setState",
+                  "target": "return-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "return-action-8-16",
+                  "type": "setState",
+                  "target": "return-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "paid"
+                  }
+                },
+                {
+                  "id": "return-action-8-17",
+                  "type": "setState",
+                  "target": "return-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "paid"
+                  }
+                },
+                {
+                  "id": "return-action-8-18",
+                  "type": "move",
+                  "target": "return-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 920,
+                    "y": 205
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "extra-scene",
+          "title": "超额加签 · 授权审批",
+          "canvas": {
+            "width": 1120,
+            "height": 660
+          },
+          "objects": [
+            {
+              "id": "extra-employee",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 30,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "申请人"
+              },
+              "details": {
+                "职责": "整理费用明细、业务事由与票据；退回后补正并重新提交。"
+              }
+            },
+            {
+              "id": "extra-manager",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 250,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "部门主管"
+              },
+              "details": {
+                "职责": "确认业务真实性、费用必要性与预算归属。"
+              }
+            },
+            {
+              "id": "extra-finance",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 470,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "财务审核"
+              },
+              "details": {
+                "职责": "核验票据、金额及重复报销；审核通过后转付款。"
+              }
+            },
+            {
+              "id": "extra-cashier",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 690,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "出纳付款"
+              },
+              "details": {
+                "职责": "依据审批结果核对收款信息并执行付款，付款成功后登记回单。"
+              }
+            },
+            {
+              "id": "extra-archive",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 910,
+                "y": 310
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "归档留痕"
+              },
+              "details": {
+                "职责": "关联申请、票据、审批记录和付款回单，供后续查询。"
+              }
+            },
+            {
+              "id": "extra-director",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 470,
+                "y": 40
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "授权负责人"
+              },
+              "details": {
+                "职责": "超出示例授权额度时加签；以企业实际授权制度为准。"
+              }
+            },
+            {
+              "id": "extra-correction",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 250,
+                "y": 520
+              },
+              "size": {
+                "width": 170,
+                "height": 108
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "退回补正"
+              },
+              "details": {
+                "职责": "说明缺失材料及原因；补正后重新送审，不直接付款。"
+              }
+            },
+            {
+              "id": "extra-bill",
+              "type": "packet",
+              "component": "flow",
+              "position": {
+                "x": 40,
+                "y": 205
+              },
+              "size": {
+                "width": 150,
+                "height": 68
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "报销单 · ¥5800"
+              },
+              "details": {
+                "职责": "教学单据：差旅费用；金额与规则均为示例。"
+              }
+            },
+            {
+              "id": "extra-submit",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "提交申请",
+                "source": "extra-employee",
+                "target": "extra-manager"
+              },
+              "details": {
+                "路径": "申请人 → 部门主管",
+                "说明": "提交申请"
+              }
+            },
+            {
+              "id": "extra-approve",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "主管同意",
+                "source": "extra-manager",
+                "target": "extra-finance"
+              },
+              "details": {
+                "路径": "部门主管 → 财务审核",
+                "说明": "主管同意"
+              }
+            },
+            {
+              "id": "extra-verify",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "核验通过",
+                "source": "extra-finance",
+                "target": "extra-cashier"
+              },
+              "details": {
+                "路径": "财务审核 → 出纳付款",
+                "说明": "核验通过"
+              }
+            },
+            {
+              "id": "extra-pay",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "付款成功",
+                "source": "extra-cashier",
+                "target": "extra-archive"
+              },
+              "details": {
+                "路径": "出纳付款 → 归档留痕",
+                "说明": "付款成功"
+              }
+            },
+            {
+              "id": "extra-escalate",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "超额加签",
+                "source": "extra-manager",
+                "target": "extra-director"
+              },
+              "details": {
+                "路径": "部门主管 → 授权负责人",
+                "说明": "超额加签"
+              }
+            },
+            {
+              "id": "extra-authorize",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "授权通过",
+                "source": "extra-director",
+                "target": "extra-finance"
+              },
+              "details": {
+                "路径": "授权负责人 → 财务审核",
+                "说明": "授权通过"
+              }
+            },
+            {
+              "id": "extra-return",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "材料缺失",
+                "source": "extra-finance",
+                "target": "extra-correction"
+              },
+              "details": {
+                "路径": "财务审核 → 退回补正",
+                "说明": "材料缺失"
+              }
+            },
+            {
+              "id": "extra-revise",
+              "type": "edge",
+              "component": "flow",
+              "position": {
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "width": 1,
+                "height": 1
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "待处理"
+              },
+              "content": {
+                "label": "补正重提",
+                "source": "extra-correction",
+                "target": "extra-employee"
+              },
+              "details": {
+                "路径": "退回补正 → 申请人",
+                "说明": "补正重提"
+              }
+            }
+          ],
+          "steps": [
+            {
+              "id": "extra-step-0",
+              "title": "整理报销材料",
+              "narration": "申请人汇总 ¥5800 差旅费用，填写业务事由、费用明细并附票据。金额、额度和审批规则仅为教学示例，实际以企业制度为准。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "extra-action-0-0",
+                  "type": "highlight",
+                  "target": "extra-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "extra-action-0-1",
+                  "type": "highlight",
+                  "target": "extra-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-0-2",
+                  "type": "highlight",
+                  "target": "extra-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-0-3",
+                  "type": "highlight",
+                  "target": "extra-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-0-4",
+                  "type": "highlight",
+                  "target": "extra-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-0-5",
+                  "type": "highlight",
+                  "target": "extra-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-0-6",
+                  "type": "highlight",
+                  "target": "extra-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-0-7",
+                  "type": "highlight",
+                  "target": "extra-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-0-8",
+                  "type": "highlight",
+                  "target": "extra-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-0-9",
+                  "type": "highlight",
+                  "target": "extra-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-0-10",
+                  "type": "highlight",
+                  "target": "extra-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-0-11",
+                  "type": "highlight",
+                  "target": "extra-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-0-12",
+                  "type": "highlight",
+                  "target": "extra-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-0-13",
+                  "type": "highlight",
+                  "target": "extra-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-0-14",
+                  "type": "highlight",
+                  "target": "extra-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-0-15",
+                  "type": "setState",
+                  "target": "extra-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待提交"
+                  }
+                },
+                {
+                  "id": "extra-action-0-16",
+                  "type": "setState",
+                  "target": "extra-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待提交"
+                  }
+                },
+                {
+                  "id": "extra-action-0-17",
+                  "type": "move",
+                  "target": "extra-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 40,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "extra-step-1",
+              "title": "提交主管审批",
+              "narration": "提交后形成可追踪的单据。主管确认业务是否真实、费用是否必要以及预算归属；提交不代表审批通过。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "extra-action-1-0",
+                  "type": "highlight",
+                  "target": "extra-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-1-1",
+                  "type": "highlight",
+                  "target": "extra-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "extra-action-1-2",
+                  "type": "highlight",
+                  "target": "extra-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-1-3",
+                  "type": "highlight",
+                  "target": "extra-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-1-4",
+                  "type": "highlight",
+                  "target": "extra-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-1-5",
+                  "type": "highlight",
+                  "target": "extra-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-1-6",
+                  "type": "highlight",
+                  "target": "extra-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-1-7",
+                  "type": "highlight",
+                  "target": "extra-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "extra-action-1-8",
+                  "type": "highlight",
+                  "target": "extra-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-1-9",
+                  "type": "highlight",
+                  "target": "extra-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-1-10",
+                  "type": "highlight",
+                  "target": "extra-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-1-11",
+                  "type": "highlight",
+                  "target": "extra-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-1-12",
+                  "type": "highlight",
+                  "target": "extra-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-1-13",
+                  "type": "highlight",
+                  "target": "extra-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-1-14",
+                  "type": "highlight",
+                  "target": "extra-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-1-15",
+                  "type": "setState",
+                  "target": "extra-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "extra-action-1-16",
+                  "type": "setState",
+                  "target": "extra-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待主管审批"
+                  }
+                },
+                {
+                  "id": "extra-action-1-17",
+                  "type": "setState",
+                  "target": "extra-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待主管审批"
+                  }
+                },
+                {
+                  "id": "extra-action-1-18",
+                  "type": "move",
+                  "target": "extra-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 260,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "extra-step-2",
+              "title": "判断授权额度",
+              "narration": "本例设定 ¥3,000 为主管授权额度，¥5,800 超出示例额度，需要授权负责人加签；这不是通用报销标准。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "extra-action-2-0",
+                  "type": "highlight",
+                  "target": "extra-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-2-1",
+                  "type": "highlight",
+                  "target": "extra-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-2-2",
+                  "type": "highlight",
+                  "target": "extra-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-2-3",
+                  "type": "highlight",
+                  "target": "extra-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-2-4",
+                  "type": "highlight",
+                  "target": "extra-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-2-5",
+                  "type": "highlight",
+                  "target": "extra-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "extra-action-2-6",
+                  "type": "highlight",
+                  "target": "extra-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-2-7",
+                  "type": "highlight",
+                  "target": "extra-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-2-8",
+                  "type": "highlight",
+                  "target": "extra-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-2-9",
+                  "type": "highlight",
+                  "target": "extra-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-2-10",
+                  "type": "highlight",
+                  "target": "extra-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-2-11",
+                  "type": "highlight",
+                  "target": "extra-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "extra-action-2-12",
+                  "type": "highlight",
+                  "target": "extra-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-2-13",
+                  "type": "highlight",
+                  "target": "extra-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-2-14",
+                  "type": "highlight",
+                  "target": "extra-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-2-15",
+                  "type": "setState",
+                  "target": "extra-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "extra-action-2-16",
+                  "type": "setState",
+                  "target": "extra-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待加签"
+                  }
+                },
+                {
+                  "id": "extra-action-2-17",
+                  "type": "setState",
+                  "target": "extra-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "待加签"
+                  }
+                },
+                {
+                  "id": "extra-action-2-18",
+                  "type": "move",
+                  "target": "extra-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 660,
+                    "y": 62
+                  }
+                }
+              ]
+            },
+            {
+              "id": "extra-step-3",
+              "title": "负责人加签通过",
+              "narration": "授权负责人确认超额费用的必要性与预算，批准后再交财务核验。加签不替代财务审核。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "extra-action-3-0",
+                  "type": "highlight",
+                  "target": "extra-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-3-1",
+                  "type": "highlight",
+                  "target": "extra-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-3-2",
+                  "type": "highlight",
+                  "target": "extra-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "extra-action-3-3",
+                  "type": "highlight",
+                  "target": "extra-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-3-4",
+                  "type": "highlight",
+                  "target": "extra-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-3-5",
+                  "type": "highlight",
+                  "target": "extra-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-3-6",
+                  "type": "highlight",
+                  "target": "extra-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-3-7",
+                  "type": "highlight",
+                  "target": "extra-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-3-8",
+                  "type": "highlight",
+                  "target": "extra-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-3-9",
+                  "type": "highlight",
+                  "target": "extra-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-3-10",
+                  "type": "highlight",
+                  "target": "extra-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-3-11",
+                  "type": "highlight",
+                  "target": "extra-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-3-12",
+                  "type": "highlight",
+                  "target": "extra-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "extra-action-3-13",
+                  "type": "highlight",
+                  "target": "extra-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-3-14",
+                  "type": "highlight",
+                  "target": "extra-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-3-15",
+                  "type": "setState",
+                  "target": "extra-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "extra-action-3-16",
+                  "type": "setState",
+                  "target": "extra-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "加签通过"
+                  }
+                },
+                {
+                  "id": "extra-action-3-17",
+                  "type": "setState",
+                  "target": "extra-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "加签通过"
+                  }
+                },
+                {
+                  "id": "extra-action-3-18",
+                  "type": "move",
+                  "target": "extra-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 480,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "extra-step-4",
+              "title": "财务核验票据",
+              "narration": "财务核对票据、费用明细与审批记录，排查重复报销。材料有误时走下方退回补正路径；本场景材料齐全。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "extra-action-4-0",
+                  "type": "highlight",
+                  "target": "extra-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-4-1",
+                  "type": "highlight",
+                  "target": "extra-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-4-2",
+                  "type": "highlight",
+                  "target": "extra-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "extra-action-4-3",
+                  "type": "highlight",
+                  "target": "extra-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-4-4",
+                  "type": "highlight",
+                  "target": "extra-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-4-5",
+                  "type": "highlight",
+                  "target": "extra-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-4-6",
+                  "type": "highlight",
+                  "target": "extra-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-4-7",
+                  "type": "highlight",
+                  "target": "extra-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-4-8",
+                  "type": "highlight",
+                  "target": "extra-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-4-9",
+                  "type": "highlight",
+                  "target": "extra-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-4-10",
+                  "type": "highlight",
+                  "target": "extra-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-4-11",
+                  "type": "highlight",
+                  "target": "extra-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-4-12",
+                  "type": "highlight",
+                  "target": "extra-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-4-13",
+                  "type": "highlight",
+                  "target": "extra-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-4-14",
+                  "type": "highlight",
+                  "target": "extra-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-4-15",
+                  "type": "setState",
+                  "target": "extra-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "核验通过"
+                  }
+                },
+                {
+                  "id": "extra-action-4-16",
+                  "type": "setState",
+                  "target": "extra-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "核验通过"
+                  }
+                },
+                {
+                  "id": "extra-action-4-17",
+                  "type": "move",
+                  "target": "extra-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 480,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "extra-step-5",
+              "title": "出纳执行付款",
+              "narration": "审核通过后，出纳核对收款信息并执行付款。此时仍在付款处理中，不能提前标记已支付。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "extra-action-5-0",
+                  "type": "highlight",
+                  "target": "extra-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-5-1",
+                  "type": "highlight",
+                  "target": "extra-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-5-2",
+                  "type": "highlight",
+                  "target": "extra-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-5-3",
+                  "type": "highlight",
+                  "target": "extra-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "extra-action-5-4",
+                  "type": "highlight",
+                  "target": "extra-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-5-5",
+                  "type": "highlight",
+                  "target": "extra-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-5-6",
+                  "type": "highlight",
+                  "target": "extra-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-5-7",
+                  "type": "highlight",
+                  "target": "extra-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-5-8",
+                  "type": "highlight",
+                  "target": "extra-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-5-9",
+                  "type": "highlight",
+                  "target": "extra-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "extra-action-5-10",
+                  "type": "highlight",
+                  "target": "extra-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-5-11",
+                  "type": "highlight",
+                  "target": "extra-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-5-12",
+                  "type": "highlight",
+                  "target": "extra-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-5-13",
+                  "type": "highlight",
+                  "target": "extra-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-5-14",
+                  "type": "highlight",
+                  "target": "extra-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-5-15",
+                  "type": "setState",
+                  "target": "extra-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "extra-action-5-16",
+                  "type": "setState",
+                  "target": "extra-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "付款中"
+                  }
+                },
+                {
+                  "id": "extra-action-5-17",
+                  "type": "setState",
+                  "target": "extra-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "付款中"
+                  }
+                },
+                {
+                  "id": "extra-action-5-18",
+                  "type": "move",
+                  "target": "extra-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 700,
+                    "y": 205
+                  }
+                }
+              ]
+            },
+            {
+              "id": "extra-step-6",
+              "title": "确认到账并归档",
+              "narration": "本例付款成功，登记付款回单，将单据、票据、审批与回单关联归档。只有确认付款成功后，单据才进入已支付状态。",
+              "durationMs": 3500,
+              "actions": [
+                {
+                  "id": "extra-action-6-0",
+                  "type": "highlight",
+                  "target": "extra-employee",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-6-1",
+                  "type": "highlight",
+                  "target": "extra-manager",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-6-2",
+                  "type": "highlight",
+                  "target": "extra-finance",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-6-3",
+                  "type": "highlight",
+                  "target": "extra-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-6-4",
+                  "type": "highlight",
+                  "target": "extra-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "extra-action-6-5",
+                  "type": "highlight",
+                  "target": "extra-director",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-6-6",
+                  "type": "highlight",
+                  "target": "extra-correction",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-6-7",
+                  "type": "highlight",
+                  "target": "extra-submit",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-6-8",
+                  "type": "highlight",
+                  "target": "extra-approve",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-6-9",
+                  "type": "highlight",
+                  "target": "extra-verify",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-6-10",
+                  "type": "highlight",
+                  "target": "extra-pay",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "extra-action-6-11",
+                  "type": "highlight",
+                  "target": "extra-escalate",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-6-12",
+                  "type": "highlight",
+                  "target": "extra-authorize",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-6-13",
+                  "type": "highlight",
+                  "target": "extra-return",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-6-14",
+                  "type": "highlight",
+                  "target": "extra-revise",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": false
+                  }
+                },
+                {
+                  "id": "extra-action-6-15",
+                  "type": "setState",
+                  "target": "extra-cashier",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "已处理"
+                  }
+                },
+                {
+                  "id": "extra-action-6-16",
+                  "type": "setState",
+                  "target": "extra-bill",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "paid"
+                  }
+                },
+                {
+                  "id": "extra-action-6-17",
+                  "type": "setState",
+                  "target": "extra-archive",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "paid"
+                  }
+                },
+                {
+                  "id": "extra-action-6-18",
+                  "type": "move",
+                  "target": "extra-bill",
+                  "atMs": 250,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 920,
+                    "y": 205
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

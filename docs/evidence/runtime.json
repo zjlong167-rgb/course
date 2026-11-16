@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-12",
+  "frontendStatus": 200,
+  "live": {
+    "status": "ok"
+  },
+  "ready": {
+    "database": "mysql",
+    "status": "ok"
+  },
+  "proxyReady": {
+    "database": "mysql",
+    "status": "ok"
+  },
+  "databaseVersion": "8.4.13",
+  "migration": "001_initial applied; rerun already applied"
+}

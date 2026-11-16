@@ -1,0 +1,1 @@
+PASS blank, four isolated templates, all entity IDs and exact endpoints/targets, production resource requirement, parameter and reference pointers

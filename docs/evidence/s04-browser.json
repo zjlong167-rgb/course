@@ -1,0 +1,53 @@
+{
+  "result": "passed",
+  "browser": "157.0.8103.51",
+  "errors": [],
+  "results": [
+    {
+      "category": 0,
+      "type": "node",
+      "drag": {
+        "x": 256.9,
+        "y": 194.02
+      },
+      "saveReload": "exact body preserved",
+      "priorActionsPreserved": true
+    },
+    {
+      "category": 1,
+      "type": "packet",
+      "drag": {
+        "x": 248.8,
+        "y": 189.03
+      },
+      "saveReload": "exact body preserved",
+      "priorActionsPreserved": true
+    },
+    {
+      "category": 2,
+      "type": "geometry",
+      "drag": {
+        "x": 254.43,
+        "y": 192.5
+      },
+      "saveReload": "exact body preserved",
+      "priorActionsPreserved": true
+    },
+    {
+      "category": 3,
+      "type": "image",
+      "drag": {
+        "x": 263.7,
+        "y": 198.2
+      },
+      "saveReload": "exact body preserved",
+      "priorActionsPreserved": true
+    },
+    {
+      "structure": "create/delete/reorder chapters scenes objects, form and handle edges persisted"
+    },
+    {
+      "guards": "unsaved reload/navigation cancelled; pending edits dirty; 503 preserved body; 409 retained body and merged/reopened"
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "formatVersion": "1.0.0",
+  "id": "production",
+  "title": "生产加工流程",
+  "summary": "生产加工流程的分步教学样例",
+  "category": "manufacturing",
+  "assets": [],
+  "components": [
+    {
+      "type": "flow",
+      "version": "1.0.0"
+    },
+    {
+      "type": "annotation",
+      "version": "1.0.0"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "chapter-1",
+      "title": "基础演示",
+      "scenes": [
+        {
+          "id": "scene-1",
+          "title": "生产加工流程",
+          "canvas": {
+            "width": 960,
+            "height": 540
+          },
+          "objects": [
+            {
+              "id": "cut",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 40,
+                "y": 220
+              },
+              "size": {
+                "width": 140,
+                "height": 80
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "idle"
+              },
+              "content": {
+                "label": "切割"
+              },
+              "details": {
+                "说明": "切割"
+              }
+            },
+            {
+              "id": "drill",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 320,
+                "y": 220
+              },
+              "size": {
+                "width": 140,
+                "height": 80
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "idle"
+              },
+              "content": {
+                "label": "钻孔"
+              },
+              "details": {
+                "说明": "钻孔"
+              }
+            },
+            {
+              "id": "qc",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 650,
+                "y": 220
+              },
+              "size": {
+                "width": 140,
+                "height": 80
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "idle"
+              },
+              "content": {
+                "label": "检验"
+              },
+              "details": {
+                "说明": "检验"
+              }
+            },
+            {
+              "id": "material",
+              "type": "node",
+              "component": "flow",
+              "position": {
+                "x": 40,
+                "y": 80
+              },
+              "size": {
+                "width": 140,
+                "height": 80
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "idle"
+              },
+              "content": {
+                "label": "物料"
+              },
+              "details": {
+                "说明": "物料"
+              }
+            },
+            {
+              "id": "photo",
+              "type": "image",
+              "component": "annotation",
+              "position": {
+                "x": 600,
+                "y": 30
+              },
+              "size": {
+                "width": 140,
+                "height": 80
+              },
+              "initial": {
+                "visible": true,
+                "highlight": false,
+                "status": "idle"
+              },
+              "content": {
+                "label": "工位示意图",
+                "assetId": "station-image"
+              },
+              "details": {
+                "说明": "工位示意图"
+              }
+            }
+          ],
+          "steps": [
+            {
+              "id": "s1",
+              "title": "下料切割",
+              "narration": "原料进入切割工位；示例不代表真实设备操作规程。",
+              "durationMs": 2000,
+              "actions": [
+                {
+                  "id": "a1",
+                  "type": "setState",
+                  "target": "material",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "cut"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "s2",
+              "title": "钻孔加工",
+              "narration": "切割件转至钻孔工位并完成加工。",
+              "durationMs": 2000,
+              "actions": [
+                {
+                  "id": "a2",
+                  "type": "move",
+                  "target": "material",
+                  "atMs": 0,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 320,
+                    "y": 80
+                  }
+                },
+                {
+                  "id": "a3",
+                  "type": "setState",
+                  "target": "material",
+                  "atMs": 1500,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "drilled"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "s3",
+              "title": "质量检验",
+              "narration": "转至检验工位；预设演示路径为合格入库。",
+              "durationMs": 2000,
+              "actions": [
+                {
+                  "id": "a4",
+                  "type": "move",
+                  "target": "material",
+                  "atMs": 0,
+                  "durationMs": 1500,
+                  "params": {
+                    "x": 650,
+                    "y": 80
+                  }
+                },
+                {
+                  "id": "a5",
+                  "type": "highlight",
+                  "target": "photo",
+                  "atMs": 0,
+                  "durationMs": 0,
+                  "params": {
+                    "value": true
+                  }
+                },
+                {
+                  "id": "a6",
+                  "type": "setState",
+                  "target": "material",
+                  "atMs": 1500,
+                  "durationMs": 0,
+                  "params": {
+                    "value": "qualified"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

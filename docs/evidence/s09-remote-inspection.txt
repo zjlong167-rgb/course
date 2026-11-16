@@ -1,0 +1,42 @@
+Linux 192-192-99-188 5.15.0-191-generic #201-Ubuntu SMP Fri Aug 7 18:39:04 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=jammy
+Filesystem                         Size  Used Avail Use% Mounted on
+/dev/mapper/ubuntu--vg-ubuntu--lv   46G   29G   15G  67% /
+State  Recv-Q Send-Q           Local Address:Port  Peer Address:PortProcess                                       
+LISTEN 0      128                    0.0.0.0:22         0.0.0.0:*    users:(("sshd",pid=1971725,fd=3))            
+LISTEN 0      512                    0.0.0.0:3000       0.0.0.0:*    users:(("open-connector",pid=603346,fd=12))  
+LISTEN 0      4096             127.0.0.53%lo:53         0.0.0.0:*    users:(("systemd-resolve",pid=1972464,fd=14))
+LISTEN 0      4096   [::ffff:192.192.99.188]:50011            *:*    users:(("java",pid=72126,fd=57))             
+LISTEN 0      4096                         *:443              *:*    users:(("go-export-api",pid=1556622,fd=3))   
+LISTEN 0      128                       [::]:22            [::]:*    users:(("sshd",pid=1971725,fd=4))            
+LISTEN 0      100                          *:9086             *:*    users:(("java",pid=71014,fd=23))             
+LISTEN 0      4096   [::ffff:192.192.99.188]:20881            *:*    users:(("java",pid=71014,fd=58))             
+LISTEN 0      4096   [::ffff:192.192.99.188]:20880            *:*    users:(("java",pid=71014,fd=75))             
+LISTEN 0      100                          *:8848             *:*    users:(("java",pid=68713,fd=125))            
+LISTEN 0      4096   [::ffff:192.192.99.188]:30881            *:*    users:(("java",pid=71385,fd=57))             
+LISTEN 0      100                          *:40011            *:*    users:(("java",pid=72126,fd=23))             
+LISTEN 0      4096                         *:22222            *:*    users:(("java",pid=71014,fd=45))             
+LISTEN 0      100                          *:18081            *:*    users:(("java",pid=71385,fd=23))             
+LISTEN 0      4096                         *:18088            *:*    users:(("go-export-api",pid=1556622,fd=4))   
+LISTEN 0      4096                         *:7848             *:*    users:(("java",pid=68713,fd=128))            
+LISTEN 0      4096                         *:18089            *:*    users:(("cors-download-r",pid=1560970,fd=3)) 
+LISTEN 0      4096                         *:18090            *:*    users:(("cors-download-r",pid=1560970,fd=4)) 
+LISTEN 0      4096                         *:9848             *:*    users:(("java",pid=68713,fd=118))            
+LISTEN 0      4096                         *:9849             *:*    users:(("java",pid=68713,fd=119))            
+LISTEN 0      4096                         *:20012            *:*    users:(("test-service",pid=67168,fd=3))      
+LISTEN 0      4096                         *:20013            *:*    users:(("test-service",pid=67173,fd=3))      
+LISTEN 0      4096                         *:20011            *:*    users:(("test-service",pid=67160,fd=3))      
+bash: line 1: docker: command not found
+bash: line 1: docker: command not found
+bash: line 1: docker: command not found

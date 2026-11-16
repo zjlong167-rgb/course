@@ -1,0 +1,2 @@
+ok  	course.local/backend	2.946s
+?   	course.local/backend/cmd/migrate	[no test files]
